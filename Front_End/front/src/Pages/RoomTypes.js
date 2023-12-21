@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -25,22 +24,30 @@ export default function RoomTypes() {
   ];
 
   return (
-    <div className="center-cards">
-      <h1 className="name">Accommodations</h1>
-      <div className="card-container">
-        <Row xs={20} md={10} className="g-4">
-          {roomTypes.map((room, idx) => (
-            <Col key={idx}>
-              <Card className="card">
-                <Card.Img variant="top" src={room.image} />
-                <Card.Body>
-                  <Card.Title>{room.title}</Card.Title>
-                  <Card.Text>{room.description}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+    <div className="rooms">
+      <div className="video-container">
+        <video autoPlay loop muted className="video-background">
+          <source src="./Images/vedio.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div className="center-cards">
+        <h1 className="name">Accommodations</h1>
+        <div className="card-container">
+          <Row xs={20} md={10} className="g-4">
+            {roomTypes.map((room, idx) => (
+              <Col key={idx}>
+                <Card className="card">
+                  <Card.Img variant="top" src={room.image} />
+                  <Card.Body>
+                    <Card.Title>{room.title}</Card.Title>
+                    <Card.Text>{room.description}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
       </div>
     </div>
   );
