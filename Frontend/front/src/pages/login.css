@@ -1,0 +1,37 @@
+/* styles.css */
+
+
+.Form {
+    margin-bottom: 20px;
+  }
+  
+  /* Style the form labels */
+  .Form.Label {
+    font-weight: bold;
+  }
+  
+  /* Style the form controls */
+  .Form.Control {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  /* Customize the placeholder color */
+  .Form.Control::placeholder {
+    color: #6c757d;
+  }
+  
+  /* Style the submit button */
+  .Form.Control[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .Form.Control[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
