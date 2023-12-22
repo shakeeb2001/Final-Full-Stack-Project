@@ -22,7 +22,6 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: black;
   
-  
 }
 
 .center-cards {
@@ -36,7 +35,7 @@
     justify-content: center;
     align-items: center;
     min-height: 80vh;
-    background-color: rgba(36, 96, 122, 0.8); /* Use rgba to set background color with transparency */
+    background-color: rgba(2, 31, 43,0.7); /* Use rgba to set background color with transparency ,the last value represents the alpha channel, which controls the opacity of the color */
     margin-top: 30px;
 
 }

@@ -1,31 +1,32 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import "./SingleRoom.css";
+import "./DeluxeSRoom.css";
 
 export default function ReservationForm() {
   return (
     <div className="single-room-container">
       {/* Background Image */}
       <img
-        src={process.env.PUBLIC_URL + "Images/img1.png"}
+        src={process.env.PUBLIC_URL + "Images/img3.png"}
         alt="Background"
         className="background-image"
       />
 
       {/* Single Room Information */}
       <div className="room-info-container">
-        <h2>Single Room</h2>
+        <h2>Deluxe Single Room</h2>
         <p>
-          Single Room is only reserved for one guest. There is a bedroom with a
-          small single size bed and a private bathroom.
+          Deluxe Single Room is only reserved for one guest. There is a bedroom with a
+          small bouble size bed and a private bathroom.
         </p>
         <div className="room-details">
           <p className="guest-info">
             No of Guests: <span>1</span>| Room Size: <span>20 m²</span>|Bed
-            Size: <span>Small Bed</span> |Private Bath: <span>1</span>
+            Size: <span>Small Double</span> |Private Bath: <span>1</span>
           </p>
           <ul>
             <li>Wifi</li>
+            <li>Mini Bar</li>
             <li>Breakfast</li>
             <li>Room Service</li>
             <li>Air-Conditioner</li>
@@ -35,7 +36,7 @@ export default function ReservationForm() {
         </div>
         {/* Additional Image */}
         <img
-          src={process.env.PUBLIC_URL + "Images/img1.png"}
+          src={process.env.PUBLIC_URL + "Images/img3.png"}
           alt="Additional"
           className="additional-image"
         />

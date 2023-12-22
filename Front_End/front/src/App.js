@@ -4,6 +4,10 @@ import { BrowserRouter , Route, Routes, } from 'react-router-dom';
 //import Login from './Pages/Login';
 import RoomTypes from './Pages/RoomTypes';
 import SingleRoom from './Pages/SingleRoom';
+import DoubleRoom from './Pages/DoubleRoom';
+import DeluxeSRoom from './Pages/DeluxeSRoom';
+
+
 
 function App() {
   return (
@@ -11,6 +15,10 @@ function App() {
     <Routes>
       <Route path="/roomtypes" element={<RoomTypes />} />
       <Route path="/singleroom" element={<SingleRoom />} />
+      <Route path="doubleroom" element={<DoubleRoom />} />
+      <Route path="deluxesroom" element={<DeluxeSRoom />} />
+      
+     
 
       
     </Routes>

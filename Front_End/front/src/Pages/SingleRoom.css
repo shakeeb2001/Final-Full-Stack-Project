@@ -15,12 +15,13 @@
   margin: 20px;
   max-width: 600px;
   margin-top: 10px;
+  height: 60%;
 }
 
 .room-info-container img.additional-image {
   position: absolute;
-  bottom: 5%; /* Adjust the percentage as needed */
-  right: 10%; /* Adjust the percentage as needed */
+  bottom: 5%;
+  right: 10%; 
   max-width: 40%; /* Make the image responsive */
   height: auto; /* Maintain aspect ratio */
 }
@@ -35,11 +36,12 @@
 
 .reservation-form-container {
   margin: 20px;
-  width: 400px; /* Adjust the max-width as needed */
+  width: 400px; 
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 20px; /* Adjust padding as needed */
+  padding: 20px; 
   background-color: white;
+  height: 60%;
 }
 
 .reservation-form-container form {
@@ -57,7 +59,7 @@
   color: white;
   border: 1px solid black;
   margin: 10px;
-  margin: 10px 0; /* Adjust the margin as needed */
+  margin: 10px 0; 
 
 }
 
