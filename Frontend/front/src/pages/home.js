@@ -1,16 +1,24 @@
 import React from 'react';
 import './home.css';
+import Background from '../component/images/Hotel.png';
 
 export default function Home() {
   return (
-    <div className="homeContainer">
-      <h1 className="homeTitle">Welcome to Hotel ABC</h1>
+    <div className="Container">
+      <img src={Background} alt="Background" className="background-image" />
+      <div className="contentContainer">
+        <h1 className="homeTitle">Welcome to <br /> Crystel Cascade<br/> Hotel</h1>
         <div className="backgroundImage">
-          <h2>Perched on the pristine shores of Mount Lavinia Beach, Hotel ABC stands as a beacon of hospitality along the coastline of Colombo. This renowned hotel, with a history as rich as the sea it faces, invites guests to indulge in the captivating beauty of Mount Lavinia Beach. As one of the esteemed establishments in this coastal haven, Hotel ABC seamlessly blends tradition and modernity to craft memorable experiences for guests, weaving a story that resonates with both seasoned travelers and those embarking on new adventures.</h2>
+          <h2><i>
+            Perched on the pristine shores of Mount Lavinia Beach, <br/>Hotel Crystel Cascade
+            stands as a beacon of hospitality<br/> along the coastline of Colombo.
+            </i></h2>
         </div>
-        <div><button className="bookNowButton">Book Now</button></div>
-
+        <br />
+        <div className="centered-content">
+          <button className="btn btn-secondary">Book Now</button>
+        </div>
+      </div>
     </div>
   );
 }
-

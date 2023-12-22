@@ -1,20 +1,29 @@
-import React from 'react'
+import React from 'react';
 import './login.css'
 import Form from 'react-bootstrap/Form';
+import loginIcon from '../component/images/newlogo.png';
+import Background from '../component/images/background.png';
+
+
 
 export default function login() {
   return (
-    <div>
-    <Form>
+<div className='container'>
+<img src={Background} alt="Backgound" className="background-image" />
+    <Form className='overlay-form'>
+    <img src={loginIcon} alt="Login Icon" className="login-icon" />
+    <h2>Sign In</h2>
       <Form.Group className="mb-3" controlId="formGroupEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Label>Username</Form.Label>
+        <Form.Control className='input' type="email" placeholder="Enter Username" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control className='input' type="password" placeholder="Password" />
       </Form.Group>
+      <button className='btn mx-auto d-block' >Login</button>
+      
     </Form>
-    </div>
+</div>
   )
 }

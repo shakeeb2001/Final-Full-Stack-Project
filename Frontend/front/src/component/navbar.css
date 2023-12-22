@@ -1,65 +1,34 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    justify-content: center;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    
-    
-  }
+/* Custom CSS for Nav component */
 
-  .logo img {
-    width: 60%; /* Adjust the width as needed */
-    height: auto;
-    
-  }
+/* Center the Nav items */
+.justify-content-center{
+  display: flex;
+  background-color:#021F2B; /* Set the background color */
+  padding: 0px;
+  justify-content: center;
+  align-items: center; /* Center items vertically */
+}
+.logo-icon{
+  width: 100px;
+  height: 100px;
+  margin-right: 800px; /* Add margin to the right for spacing */  
   
-  .sidenav a {
-    padding: 15px 20px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-  }
-  
-  .sidenav a:hover {
-    background-color: #555;
-  }
-  
-  /*.content {
-    margin-left: 220px;
-    padding: 20px;
-  }*/
-  
-  .logout {
-    margin-top: auto;
-    padding: 10px 20px;
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .logout:hover {
-    background-color: #c9302c;
-  }
-  
+}
+
+/* Style the Nav links */
+.nav-link {
+  color: white; /* Set the text color */
+  font-weight: bold; /* Set the font weight */
+  margin: 0 10px; /* Add some space between links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s; /* Add a smooth color transition */
+}
+
+.nav-link:hover {
+  color:#000080; /* Change color on hover */
+}
+
+/* Active link styles */
+.nav-item.active .nav-link {
+  color: #77c298; /* Set the color for the active link */
+}
