@@ -27,7 +27,7 @@ export default function RoomTypes() {
     <div className="rooms">
       <div className="video-container">
         <video autoPlay loop muted className="video-background">
-          <source src="./Images/vedio.mp4" type="video/mp4" />
+          <source src="./Images/video.mp4" type="video/mp4" />
         </video>
       </div>
 
