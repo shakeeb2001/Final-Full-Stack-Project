@@ -1,0 +1,52 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 370vh;
+    margin-top: 1%;
+    
+  }
+  
+  .card1 {
+    width: 60rem;
+    height: 600px;
+    margin: 30px;
+  }
+  
+  .card1 img {
+    height: 400px;
+    object-fit: cover;
+    
+  }
+ 
+  .card1 .card-title {
+    font-size: 24px; 
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+   
+  }
+  
+  .card1 .card-text {
+    font-size: 16px; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  .btn-btn-add {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .add-button {
+    background-color: black;
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+  }
+
+
+
+
+  
+  

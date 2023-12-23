@@ -13,27 +13,27 @@ function Navbar() {
           <img src={loginIcon} alt="Logo" className="logo-icon" />
         </NavBootstrap.Item>
         <NavBootstrap.Item>
-          <Link to="/" className="nav-link">
+          <Link to="/" className="nav-link-1">
             Home
           </Link>
         </NavBootstrap.Item>
         <NavBootstrap.Item>
-          <Link to="/roomtypes" className="nav-link">
+          <Link to="/roomtypes" className="nav-link-1">
             RoomTypes
           </Link>
         </NavBootstrap.Item>
         <NavBootstrap.Item>
-          <Link to="/login" className="nav-link">
+          <Link to="/login" className="nav-link-1">
             Login
           </Link>
         </NavBootstrap.Item>
         <NavBootstrap.Item>
-          <Link to="/signup" className="nav-link">
+          <Link to="/signup" className="nav-link-1">
             Signup
           </Link>
         </NavBootstrap.Item>
         <NavBootstrap.Item>
-          <Link to="/signout" className="nav-link">
+          <Link to="/signout" className="nav-link-1">
             Signout
           </Link>
         </NavBootstrap.Item>

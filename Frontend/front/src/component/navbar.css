@@ -24,11 +24,11 @@
   transition: color 0.3s; /* Add a smooth color transition */
 }
 
-.nav-link:hover {
-  color:#000080; /* Change color on hover */
+.nav-link-1:hover {
+  color: white; /* Change color on hover */
 }
 
 /* Active link styles */
-.nav-item.active .nav-link {
-  color: #77c298; /* Set the color for the active link */
+.justify-content-center:active{
+  color: white; /* Set the color for the active link */
 }
