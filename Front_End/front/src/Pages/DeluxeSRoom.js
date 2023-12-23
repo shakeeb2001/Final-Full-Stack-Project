@@ -1,10 +1,10 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import "./DeluxeSRoom.css";
+import "./Room.css";
 
 export default function ReservationForm() {
   return (
-    <div className="single-room-container">
+    <div className="room-container">
       {/* Background Image */}
       <img
         src={process.env.PUBLIC_URL + "Images/img3.png"}

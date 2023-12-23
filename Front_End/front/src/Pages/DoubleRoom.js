@@ -1,10 +1,10 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import "./DoubleRoom.css";
+import "./Room.css";
 
 export default function ReservationForm() {
   return (
-    <div className="single-room-container">
+    <div className="room-container">
       {/* Background Image */}
       <img
         src={process.env.PUBLIC_URL + "Images/img2.png"}
@@ -21,7 +21,7 @@ export default function ReservationForm() {
         </p>
         <div className="room-details">
           <p className="guest-info">
-            No of Guests: <span>2</span>| Room Size: <span>26 m²</span>|Bed
+            No of Guests: <span>2-3</span>| Room Size: <span>26 m²</span>|Bed
             Size: <span>Double Bed</span> |Private Bath: <span>1</span>
           </p>
           <ul>

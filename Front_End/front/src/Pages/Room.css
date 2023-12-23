@@ -22,7 +22,7 @@
     position: absolute;
     bottom: 5%;
     right: 10%; 
-    max-width: 40%; /* Make the image responsive */
+    max-width: 55%; /* Make the image responsive */
     height: auto; /* Maintain aspect ratio */
   }
   
@@ -43,11 +43,10 @@
     background-color: white;
     height: 60%;
   }
-  
-  .reservation-form-container form {
+  .reservation-form-container form 
+  {
     margin-bottom: 15px;
   }
-  
   .reservation-form-container form input,
   .reservation-form-container form select {
     width: 100%;
@@ -62,7 +61,7 @@
     margin: 10px 0; 
   
   }
-  
+
   .background-image {
     position: absolute;
     top: 0;
@@ -72,5 +71,7 @@
     object-fit: cover; /* Ensure the image covers the entire container */
     z-index: -1; /* Place the image behind the content */
     opacity: 0.6;
+    
+    
   }
   
