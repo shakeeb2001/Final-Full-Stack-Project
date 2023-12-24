@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+
+.footer-container {
+  width: 100%;
+  background-color: rgba(3, 44, 62,0.6);
+  height: 290px;
+  position: relative;
+}
+
+.footer-icon {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.footer-h1 {
+  font-family: 'Tangerine', cursive;
+  padding: 20px;
+  font-family: 100px;
+}
+
+.contact-info {
+  padding-left: 20px;
+  color: aliceblue;
+  font-weight: 200;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.social-icons {
+  margin: 10px;
+  display: flex;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  position: relative;
+}
+
+.social-icons a img {
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+}
+
+.text-footer {
+  text-align: center;
+}
