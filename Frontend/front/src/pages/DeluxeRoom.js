@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import "./DeluxeRoom.css";
+import "./Doubleroom.css";
 import DeluxImg from '../images/img3.png';
 
 export default function ReservationForm() {
-  // State to store form data, including room type
   const [formData, setFormData] = useState({
     name: "",
     idNumber: "",
     phoneNumber: "",
     checkIn: "",
     checkOut: "",
-    roomType: "Delux Room", // Default room type
+    roomType: "Delux Room",
   });
 
-  // Function to handle form input changes
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -23,13 +21,48 @@ export default function ReservationForm() {
     }));
   };
 
-  // Function to handle form submission
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Log the form data to the console
-    console.log("Form Data:", formData);
-    // You can add additional logic here, such as sending the data to a server
+
+    const reservation = {
+        name: formData.name,
+        idNumber: formData.idNumber,
+        phoneNumber: formData.phoneNumber,
+        roomType: formData.roomType,
+        checkIn: formData.checkIn,
+        checkOut: formData.checkOut,
+    };
+
+    try {
+        // Send a POST request to save the reservation data
+        const response = await fetch('http://localhost:3001/api/reservations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reservation),
+        });
+
+        if (response.ok) {
+            console.log('Reservation saved successfully');
+        } else {
+            console.error('Failed to save reservation');
+        }
+    } catch (error) {
+        console.error('Error saving reservation:', error);
+    }
+
+    // Clear form data after submission
+    setFormData({
+        name: "",
+        idNumber: "",
+        phoneNumber: "",
+        checkIn: "",
+        checkOut: "",
+        roomType: "Double Room",
+    });
   };
+
 
   return (
     <div className="room-container">
@@ -107,7 +140,6 @@ export default function ReservationForm() {
             />
           </Form.Group>
 
-          {/* Add a hidden input for room type */}
           <Form.Group controlId="roomType" style={{ display: "none" }}>
             <Form.Control type="text" value={formData.roomType} readOnly />
           </Form.Group>

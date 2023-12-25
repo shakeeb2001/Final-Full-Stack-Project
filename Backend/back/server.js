@@ -6,6 +6,7 @@ const multer = require('multer');
 const SignupModel = require('../back/models/signupmodel');
 const EventModel = require('../back/models/eventcardmodel');
 const DiningModel = require('../back/models/diningcardmodel');
+const BookingModel = require('../back/models/bookinghistrotymodel');
 
 const app = express();
 app.use(cors());
@@ -90,7 +91,7 @@ app.get('/api/dinings', async (req, res) => {
     }
 });
 
-// Handle DELETE request to delete an event card
+
 app.delete('/api/events/:eventId', async (req, res) => {
     const { eventId } = req.params;
     
@@ -122,6 +123,115 @@ app.delete('/api/dinings/:diningId', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.post('/api/reservations', (req, res) => {
+    const {
+        name,
+        idNumber,
+        phoneNumber,
+        roomType,
+        checkIn,
+        checkOut
+    } = req.body;
+
+    BookingModel.create({
+        name,
+        idNumber,
+        phoneNumber,
+        roomType,
+        checkIn,
+        checkOut,
+    })
+    .then(newReservation => {
+        console.log('Reservation created:', newReservation);
+        res.json(newReservation);
+    })
+    .catch(err => {
+        console.error('Error creating reservation:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
+});
+
+app.get('/api/reservations', async (req, res) => {
+    try {
+      const existingReservations = await BookingModel.find();
+      res.json(existingReservations);
+    } catch (error) {
+      console.error('Error fetching existing reservations:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+
+// Update reservation by ID
+app.put('/api/reservations/:reservationId', async (req, res) => {
+    const { reservationId } = req.params;
+    const {
+        name,
+        idNumber,
+        phoneNumber,
+        roomType,
+        checkIn,
+        checkOut
+    } = req.body;
+
+    try {
+        const updatedReservation = await BookingModel.findByIdAndUpdate(
+            reservationId,
+            {
+                name,
+                idNumber,
+                phoneNumber,
+                roomType,
+                checkIn,
+                checkOut,
+            },
+            { new: true }
+        );
+
+        if (updatedReservation) {
+            console.log('Reservation updated:', updatedReservation);
+            res.json(updatedReservation);
+        } else {
+            res.status(404).json({ error: 'Reservation not found' });
+        }
+    } catch (error) {
+        console.error('Error updating reservation:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// Delete reservation by ID
+app.delete('/api/reservations/:reservationId', async (req, res) => {
+    const { reservationId } = req.params;
+
+    try {
+        const deletedReservation = await BookingModel.findByIdAndDelete(reservationId);
+        if (deletedReservation) {
+            console.log('Reservation deleted successfully');
+            res.json({ message: 'Reservation deleted successfully' });
+        } else {
+            res.status(404).json({ error: 'Reservation not found' });
+        }
+    } catch (error) {
+        console.error('Error deleting reservation:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// Find booking by ID number
+app.get('/api/reservations/:idNumber', async (req, res) => {
+    const { idNumber } = req.params;
+
+    try {
+        const bookings = await BookingModel.find({ idNumber });
+        res.json(bookings);
+    } catch (error) {
+        console.error('Error finding reservations:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 app.listen(3001, () => {
     console.log("server is running");

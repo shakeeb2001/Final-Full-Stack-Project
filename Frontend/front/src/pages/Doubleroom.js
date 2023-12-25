@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Doubleroom.css";
 import DoubleImg from '../images/img2.png';
+import BookingHistory from './BookingHistory';
 
 export default function ReservationForm() {
-  // State to store form data, including room type
   const [formData, setFormData] = useState({
     name: "",
     idNumber: "",
     phoneNumber: "",
     checkIn: "",
     checkOut: "",
-    roomType: "Double Room", // Default room type
+    roomType: "Double Room",
   });
 
-  // Function to handle form input changes
+  const [bookingHistory, setBookingHistory] = useState([]);
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -23,13 +24,50 @@ export default function ReservationForm() {
     }));
   };
 
-  // Function to handle form submission
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Log the form data to the console
-    console.log("Form Data:", formData);
-    // You can add additional logic here, such as sending the data to a server
-  };
+
+    const reservation = {
+        name: formData.name,
+        idNumber: formData.idNumber,
+        phoneNumber: formData.phoneNumber,
+        roomType: formData.roomType,
+        checkIn: formData.checkIn,
+        checkOut: formData.checkOut,
+    };
+
+    try {
+        // Send a POST request to save the reservation data
+        const response = await fetch('http://localhost:3001/api/reservations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reservation),
+        });
+
+        if (response.ok) {
+            console.log('Reservation saved successfully');
+        } else {
+            console.error('Failed to save reservation');
+        }
+    } catch (error) {
+        console.error('Error saving reservation:', error);
+    }
+
+    // Update booking history locally
+    setBookingHistory((prevHistory) => [...prevHistory, reservation]);
+
+    // Clear form data after submission
+    setFormData({
+        name: "",
+        idNumber: "",
+        phoneNumber: "",
+        checkIn: "",
+        checkOut: "",
+        roomType: "Double Room",
+    });
+};
 
   return (
     <div className="room-container">
@@ -107,7 +145,6 @@ export default function ReservationForm() {
             />
           </Form.Group>
 
-          {/* Add a hidden input for room type */}
           <Form.Group controlId="roomType" style={{ display: "none" }}>
             <Form.Control type="text" value={formData.roomType} readOnly />
           </Form.Group>
@@ -117,6 +154,7 @@ export default function ReservationForm() {
           </Button>
         </Form>
       </div>
+      <BookingHistory bookingHistory={bookingHistory} />
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <div className='footer-container'>
       <br></br>
-      <h1 className='footer-h1'>Crystel Cascade Hotel</h1>
+      <h1 className='footer-h1'>Crystal Cascade Hotel</h1>
       
       <img src={FooterIcon} alt="Logo" className="footer-icon" />
       <div className="contact-info">
@@ -28,7 +28,7 @@ export default function Footer() {
         </a>
       </div>
       <div className="text-footer">
-      <span>© 2023 Crystel Cascade Hotel</span>
+      <span>© 2023 Crystal Cascade Hotel</span>
       </div>
       </div>
     </div>

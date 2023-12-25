@@ -18,21 +18,19 @@ export default function Login({ updateLoginStatus }) {
       .then(result => {
         console.log(result);
 
-        // Assuming your server responds with 'Login Successfully..' for a successful login
-        if (result.data === 'sucsses') {
-          console.log('Navigating to /');
-          updateLoginStatus(true); // Update login status using the passed prop
+        if (result.data === 'success') {
+          const isAdmin = username === 'admin' && password === '1234';
+          console.log('Login successful. isAdmin:', isAdmin);
+          updateLoginStatus(true, isAdmin);
           navigate('/');
-          console.log('Navigation complete');
         } else {
-          console.log('Login failed'); // Add a log for unsuccessful login for debugging
+          console.log('Login failed');
         }
       })
       .catch(error => {
         console.error('API request failed:', error);
-        // Handle the error, e.g., display an error message to the user
       });
-  }
+  };
 
   return (
     <div className='container'>

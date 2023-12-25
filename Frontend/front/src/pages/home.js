@@ -4,8 +4,9 @@ import Slider from 'react-slick';
 import './home.css';
 import Footer from '../component/footer';
 import Background from '../images/Hotel.png';
-import EventImageOne from '../images/fire.jpeg';
-import EventImageTwo from '../images/surfing.jpeg';
+import EventImageOne from '../images/engagement.png';
+import EventImageTwo from '../images/wedding.png';
+import EventImageThree from '../images/birthday.png';
 import DinningimgOne from '../images/dinning01.webp';
 import DinningimgTwo from '../images/dinning02.webp';
 import DinningimgThree from '../images/dinning03.jpeg';
@@ -39,11 +40,11 @@ export default function Home() {
   };
 
   return (
-    <body>
+    <div>
       <div className="Container1">
         <img src={Background} alt="Background" className="background-image-new img-fluid" />
         <div className="contentContainer text-center text-md-left">
-          <h1 className="homeTitle">Welcome to Crystel Cascade Hotel</h1>
+          <h1 className="homeTitle">Welcome to Crystal Cascade Hotel</h1>
           <div className="backgroundImage">
             <h2 className='h2-new'><i>
               Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
@@ -51,9 +52,9 @@ export default function Home() {
               {isLoggedIn ? (
                 <button className="btn btn-secondary">Book Now</button>
               ) : (
-                <button className="btn btn-secondary" onClick={handleLogin}>
+                <Link to='/roomtype' className="btn btn-secondary" onClick={handleLogin}>
                   Log in to Book Now
-                </button>
+                </Link>
               )}
             </i></h2>
           </div>
@@ -74,42 +75,30 @@ export default function Home() {
           <div>
             <div className="card">
               <div className="card-body-event">
-                <h3>Surfing</h3>
+                <h3>Engagement</h3>
+              
+                <Link to='/event'><img src={EventImageOne} alt="Background" className="event-image-two img-fluid" /></Link>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="card">
+              <div className="card-body-event">
+                <h3>Wedding</h3>
                 <h4>The Sri Lankan Surf Federation was established in 2017 and the inaugural edition of the National Surf Championship was held in 2018. The winner of the 2018 Sri Lankan National Surf Championship went onto qualify and participate at the 2019 IAS World Surfing Games which was held in Japan. It also marked the first-ever instance that a delegation from Sri Lanka had competed in the World Surfing Games. Sri Lanka alongside Lebanon, Thailand, and American Samoa also made their debuts at the World Surfing Games during the 2019 edition</h4>
-                <img src={EventImageTwo} alt="Background" className="event-image-two img-fluid" />
+                <Link to='/event'><img src={EventImageTwo} alt="Background" className="event-image-two img-fluid" /></Link>
               </div>
             </div>
           </div>
+          <div>
+          <div className="card">
+              <div className="card-body-event">
+                <h3>Engagement</h3>
 
-          <div>
-            <div className="card">
-              <div className="card-body-event">
-                <h3>Beach Party Arrangements</h3>
-                <h4>Description of another event goes here.</h4>
-                <img src={EventImageOne} alt="Background" className="event-image-two img-fluid" />
+                <Link to='/event'><img src={EventImageThree} alt="Background" className="event-image-two img-fluid" /></Link>
               </div>
             </div>
           </div>
-          <div>
-            <div className="card">
-              <div className="card-body-event">
-                <h3>Beach Party Arrangements</h3>
-                <h4>Description of another event goes here.</h4>
-                <img src={EventImageOne} alt="Background" className="event-image-two img-fluid" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="card">
-              <div className="card-body-event">
-                <h3>Beach Party Arrangements</h3>
-                <h4>Description of another event goes here.</h4>
-                <img src={EventImageOne} alt="Background" className="event-image-two img-fluid" />
-              </div>
-            </div>
-          </div>
-
-          {/* Add more cards as needed */}
         </Slider>
 
         <br></br>
@@ -165,6 +154,6 @@ export default function Home() {
       </div>
 
 
-     </body>
+     </div>
   );
   }

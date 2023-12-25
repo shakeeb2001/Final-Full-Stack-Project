@@ -4,9 +4,10 @@ import NavBootstrap from 'react-bootstrap/Nav';
 import './navbar.css';
 import loginIcon from '../images/newlogo.png';
 
-function Navbar({ isLoggedIn, updateLoginStatus }) {
+function Navbar({ isLoggedIn, updateLoginStatus, isAdmin }) {
   const navigate = useNavigate();
   const location = useLocation();
+  console.log('isAdmin:', isAdmin);
 
   const handleScrollToEvents = () => {
     const eventsSection = document.getElementById('events-container');
@@ -28,23 +29,24 @@ function Navbar({ isLoggedIn, updateLoginStatus }) {
       aboutUsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  
+
   const handleSignOut = () => {
     // Perform sign-out logic, e.g., update state and navigate to the signout page
-    updateLoginStatus(false);
+    updateLoginStatus(false, false); // Setting both to false when signing out
     navigate('/signout'); // Navigate to the signout page
     // Additional logic as needed
   };
 
-  // Check if the current page is the "signout" page
+  // Log isAdmin only when it's defined
   const isSignOutPage = location.pathname === '/signout';
+
+  
 
   return (
     <>
       <NavBootstrap className="justify-content-center" defaultActiveKey="/">
-        {/* Logo Icon */}
         <NavBootstrap.Item>
-          <Link to="/" className="nav-link">
+          <Link to="/" class="nav-link active">
             <img src={loginIcon} alt="Logo" className="logo-icon" />
           </Link>
         </NavBootstrap.Item>
@@ -68,6 +70,15 @@ function Navbar({ isLoggedIn, updateLoginStatus }) {
             Dining
           </Link>
         </NavBootstrap.Item>
+
+        {isAdmin && (
+          <NavBootstrap.Item>
+            <Link to="/bookinghistory" className="nav-link">
+              Booking History
+            </Link>
+          </NavBootstrap.Item>
+        )}
+
         <NavBootstrap.Item>
           <Link to="/#" className="nav-link" onClick={handleScrollToAboutus}>
             About Us

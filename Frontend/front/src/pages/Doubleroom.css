@@ -1,7 +1,7 @@
 .room-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
   height: 100vh;
   overflow: hidden;
 }
@@ -16,16 +16,14 @@
   max-width: 600px;
   margin-top: 10px;
   height: 60%;
-  z-index: 1; /* Adjusted z-index */
 }
 
 .room-info-container img.additional-image {
   position: absolute;
   bottom: 5%;
-  right: 10%;
-  max-width: 40%;
-  height: auto;
-  z-index: 0; /* Adjusted z-index */
+  right: 10%; 
+  max-width: 55%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .room-details {
@@ -38,18 +36,17 @@
 
 .reservation-form-container {
   margin: 20px;
-  width: 400px;
+  width: 400px; 
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  padding: 20px; 
   background-color: white;
   height: 60%;
 }
-
-.reservation-form-container form {
+.reservation-form-container form 
+{
   margin-bottom: 15px;
 }
-
 .reservation-form-container form input,
 .reservation-form-container form select {
   width: 100%;
@@ -61,6 +58,8 @@
   color: white;
   border: 1px solid black;
   margin: 10px;
+  margin: 10px 0; 
+
 }
 
 .background-image {
@@ -69,7 +68,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: -1;
+  object-fit: cover; /* Ensure the image covers the entire container */
+  z-index: -1; /* Place the image behind the content */
   opacity: 0.6;
+  
+  
 }

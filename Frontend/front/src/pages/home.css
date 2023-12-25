@@ -91,7 +91,6 @@ body {
 #events-container .card {
   height: 400px;
   width: 90%;
-  margin-left: 10px;
   display: inline-flex;
   margin-top: 50px;
   margin-bottom: 30px;

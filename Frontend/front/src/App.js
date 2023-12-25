@@ -1,3 +1,5 @@
+// App.js
+
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -14,24 +16,27 @@ import Event from "./pages/event";
 import BookingHistory from "./pages/BookingHistory";
 import Dining from "./pages/Dining";
 
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <div>
+    
       <BrowserRouter>
-      <Navbar isLoggedIn={isLoggedIn} updateLoginStatus={setIsLoggedIn} />
+        <Navbar isLoggedIn={isLoggedIn} updateLoginStatus={setIsLoggedIn} isAdmin={isAdmin} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/roomtype" element={<RoomType/>} />
+          <Route path="/roomtype" element={<RoomType />} />
           <Route path="/bookinghistory" element={<BookingHistory />} />
           <Route path="/deluxroom" element={<DeluxRoom />} />
           <Route path="/singleroom" element={<SingleRoom />} />
           <Route path="/doubleroom" element={<DoubleRoom />} />
           <Route path="/event" element={<Event />} />
           <Route path="/dining" element={<Dining />} />
-          <Route path="/login" element={<Login updateLoginStatus={setIsLoggedIn} />} />
-          <Route path="/signout" element={<Signout />} />
+          <Route path="/login" element={<Login updateLoginStatus={(status, admin) => { setIsLoggedIn(status); setIsAdmin(admin); }} />} />
+          <Route path="/signout" element={<Signout updateLoginStatus={setIsLoggedIn} setIsAdmin={setIsAdmin} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
