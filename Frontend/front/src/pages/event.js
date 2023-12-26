@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './event.css'; // Import the CSS file
 
-const Event = () => {
+const Event = ({ isAdmin }) => {
   const [showModal, setShowModal] = useState(false);
   const [cards, setCards] = useState([]);
   const [newCard, setNewCard] = useState({ title: '', description: '', image: null });
@@ -108,12 +108,28 @@ const Event = () => {
       console.error('Error:', error);
     }
   };
+   // Inside the Dining component
+useEffect(() => {
+  console.log('isAdmin:', isAdmin);
+  const fetchCards = async () => {
+    // ... (rest of the code)
+  };
+
+  fetchCards();
+}, [isAdmin]);
+
+useEffect(() => {
+  console.log('isAdmin:', isAdmin);
+  // ... rest of the code
+}, [isAdmin]);
 
   return (
     <div className="container">
-      <Button variant="primary" className="btn-btn-add btn-secondary" onClick={handleShowModal}>
-        Add
-      </Button>
+      {isAdmin && (
+        <Button variant="primary" className="btn-btn-add btn-secondary" onClick={handleShowModal}>
+          Add
+        </Button>
+      )}
 
        {cards.map((card, index) => (
         <Card key={index} className="card1">
@@ -121,10 +137,11 @@ const Event = () => {
           <Card.Body>
             <Card.Title>{card.title}</Card.Title>
             <Card.Text>{card.description}</Card.Text>
-            
-  <Button variant="danger" onClick={() => handleDeleteCard(card._id)}>
-    Delete
-  </Button>
+            {isAdmin && (
+              <Button variant="danger" onClick={() => handleDeleteCard(card._id)}>
+                Delete
+              </Button>
+            )}
 
           </Card.Body>
         </Card>

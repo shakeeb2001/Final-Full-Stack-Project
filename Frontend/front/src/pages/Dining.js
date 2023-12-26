@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import './Dining.css'; // Import the CSS file
 
-const Dining = () => {
+const Dining = ({ isAdmin }) => {
   const [showModal, setShowModal] = useState(false);
   const [cards, setCards] = useState([]);
   const [newCard, setNewCard] = useState({ title: '', description: '', image: null });
@@ -92,6 +92,22 @@ const Dining = () => {
     fetchCards();
   }, []);
 
+
+  // Inside the Dining component
+useEffect(() => {
+  console.log('isAdmin:', isAdmin);
+  const fetchCards = async () => {
+    // ... (rest of the code)
+  };
+
+  fetchCards();
+}, [isAdmin]);
+
+useEffect(() => {
+  console.log('isAdmin:', isAdmin);
+  // ... rest of the code
+}, [isAdmin]);
+
   const handleDeleteCard = async (cardId) => {
     try {
       const response = await fetch(`http://localhost:3001/api/dinings/${cardId}`, {
@@ -111,21 +127,24 @@ const Dining = () => {
 
   return (
     <div className="container">
-      <Button variant="primary" className="btn-btn-add btn-secondary" onClick={handleShowModal}>
-        Add
-      </Button>
+      {isAdmin && (
+        <Button variant="primary" className="btn-btn-add btn-secondary" onClick={handleShowModal}>
+          Add
+        </Button>
+      )}
 
-       {cards.map((card, index) => (
+      {cards.map((card, index) => (
         <Card key={index} className="card1">
           <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
           <Card.Body>
             <Card.Title>{card.title}</Card.Title>
             <Card.Text>{card.description}</Card.Text>
-            
-                <Button variant="danger" onClick={() => handleDeleteCard(card._id)}>
-                   Delete
-                 </Button>
 
+            {isAdmin && (
+              <Button variant="danger" onClick={() => handleDeleteCard(card._id)}>
+                Delete
+              </Button>
+            )}
           </Card.Body>
         </Card>
       ))}

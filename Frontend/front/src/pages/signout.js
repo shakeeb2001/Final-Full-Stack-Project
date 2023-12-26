@@ -11,9 +11,7 @@ export default function Signout({ updateLoginStatus, setIsAdmin }) {
   const navigate = useNavigate();
 
   const handleSignout = () => {
-    // Add signout logic here, if needed
 
-    // Update login status and isAdmin
     updateLoginStatus(false);
     setIsAdmin(false);
 
@@ -22,20 +20,20 @@ export default function Signout({ updateLoginStatus, setIsAdmin }) {
   };
 
   const handleCancel = () => {
-    // Use the navigate function to go to the home page without updating state
+    // Navigate to the home page without updating state
     navigate('/');
   };
-  
+
   return (
     <div className='container'>
       <img src={Background} alt="Background1" className="background-im" />
       <Form className='overlay-form-one'>
         <img src={loginIcon} alt="Login Icon" className="login-icon" />
         <h3>Do You want To Signout......</h3>
-        <button className='btn' onClick={handleSignout}>
+        <button type='button' className='btn' onClick={handleSignout}>
           Yes
         </button>
-        <button className='btn' onClick={handleCancel}>
+        <button type='button' className='btn' onClick={handleCancel}>
           Cancel
         </button>
       </Form>

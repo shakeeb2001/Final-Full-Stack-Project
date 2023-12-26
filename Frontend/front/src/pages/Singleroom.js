@@ -1,19 +1,21 @@
-import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import "./Singleroom.css";
+import React, { useState } from 'react';
+import { Form, Button, Modal } from 'react-bootstrap';
+import axios from 'axios';
+import './Singleroom.css';
 import SingleImg from '../images/img1.png';
 
-export default function ReservationForm() {
- 
+export default function SingleRoom() {
   const [formData, setFormData] = useState({
-    name: "",
-    idNumber: "",
-    phoneNumber: "",
-    checkIn: "",
-    checkOut: "",
-    roomType: "Single Room", 
+    name: '',
+    idNumber: '',
+    phoneNumber: '',
+    checkIn: '',
+    checkOut: '',
+    roomType: 'Single Room',
   });
 
+  const [showModal, setShowModal] = useState(false);
+  const [reservationStatus, setReservationStatus] = useState(null);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -23,19 +25,73 @@ export default function ReservationForm() {
     }));
   };
 
-  
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log("Form Data:", formData);
-    
+    // Display the modal to confirm reservation
+    setShowModal(true);
+  };
+
+  const handleModalYes = async () => {
+    // Log the form data to the console
+    console.log('Form Data:', formData);
+
+    try {
+      // Make an API call to your server to save the reservation
+      const response = await axios.post('http://localhost:3001/api/reservations', formData);
+
+      // Assuming your server responds with a success message
+      if (response.data.success) {
+        setReservationStatus('success');
+
+        // Close the modal after 3 seconds
+        setTimeout(() => {
+          // Clear form data after successful submission
+          setFormData({
+            name: '',
+            idNumber: '',
+            phoneNumber: '',
+            checkIn: '',
+            checkOut: '',
+            roomType: 'Single Room',
+          });
+
+          // Close the modal
+          setShowModal(false);
+          // Clear reservation status
+          setReservationStatus(null);
+        }, 3000);
+      } else {
+        // Handle the case where the reservation failed
+        setReservationStatus('failure');
+      }
+    } catch (error) {
+      console.error('Error submitting reservation:', error);
+      // Handle errors, setReservationStatus('failure') or display an error message
+    }
+  };
+
+  const handleCloseModal = () => {
+    // Clear form data after successful submission
+    setFormData({
+      name: '',
+      idNumber: '',
+      phoneNumber: '',
+      checkIn: '',
+      checkOut: '',
+      roomType: 'Double Room',
+    });
+
+    // Close the modal
+    setShowModal(false);
+    // Clear reservation status
+    setReservationStatus(null);
   };
 
   return (
     <div className="room-container">
       <img src={SingleImg} alt="Background" className="background-image" id='singleroom' />
       <div className="room-info-container">
-        <h2>{formData.roomType}</h2>
+        <h2>Single Room</h2>
         <p>
           Deluxe Single Room is only reserved for one guest. There is a bedroom with a
           small double-size bed and a private bathroom.
@@ -55,7 +111,7 @@ export default function ReservationForm() {
             <li>Pet Friendly</li>
           </ul>
         </div>
-        <img src={SingleImg} alt="Additional" className="additional-image" id='singleroom' />
+        <img src={SingleImg} alt="Additional" className="additional-image" id='deluxroom' />
       </div>
       <div className="reservation-form-container">
         <Form onSubmit={handleFormSubmit}>
@@ -107,7 +163,6 @@ export default function ReservationForm() {
             />
           </Form.Group>
 
-          {/* Add a hidden input for room type */}
           <Form.Group controlId="roomType" style={{ display: "none" }}>
             <Form.Control type="text" value={formData.roomType} readOnly />
           </Form.Group>
@@ -117,6 +172,33 @@ export default function ReservationForm() {
           </Button>
         </Form>
       </div>
+
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Reservation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {reservationStatus === null ? (
+            <p>Do you want to reserve?</p>
+          ) : (
+            <div className={`reservation-status text-center ${reservationStatus}`}>
+              <p className="model-class">Reserved successfully!</p>
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          {reservationStatus === null ? (
+            <>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                No
+              </Button>
+              <Button variant="primary" onClick={handleModalYes}>
+                Yes
+              </Button>
+            </>
+          ) : null}
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

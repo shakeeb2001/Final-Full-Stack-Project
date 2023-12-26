@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
 import NavBootstrap from 'react-bootstrap/Nav';
 import './navbar.css';
 import loginIcon from '../images/newlogo.png';
@@ -32,21 +32,20 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin }) {
 
   const handleSignOut = () => {
     // Perform sign-out logic, e.g., update state and navigate to the signout page
-    updateLoginStatus(false, false); // Setting both to false when signing out
+    updateLoginStatus(false);
     navigate('/signout'); // Navigate to the signout page
     // Additional logic as needed
   };
-
-  // Log isAdmin only when it's defined
+   // Log isAdmin only when it's defined
+ 
   const isSignOutPage = location.pathname === '/signout';
-
-  
 
   return (
     <>
-      <NavBootstrap className="justify-content-center" defaultActiveKey="/">
+      <NavBootstrap className="justify-content-center" defaultActiveKey="/" >
+
         <NavBootstrap.Item>
-          <Link to="/" class="nav-link active">
+          <Link to="/" class="nav-link active"  >
             <img src={loginIcon} alt="Logo" className="logo-icon" />
           </Link>
         </NavBootstrap.Item>
@@ -72,12 +71,13 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin }) {
         </NavBootstrap.Item>
 
         {isAdmin && (
-          <NavBootstrap.Item>
-            <Link to="/bookinghistory" className="nav-link">
-              Booking History
-            </Link>
-          </NavBootstrap.Item>
-        )}
+  <NavBootstrap.Item>
+    <Link to="/bookinghistory" className="nav-link">
+      Booking History
+    </Link>
+  </NavBootstrap.Item>
+)}
+
 
         <NavBootstrap.Item>
           <Link to="/#" className="nav-link" onClick={handleScrollToAboutus}>
@@ -85,7 +85,6 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin }) {
           </Link>
         </NavBootstrap.Item>
 
-        {/* Conditional rendering based on login status and page */}
         {isLoggedIn ? (
           <NavBootstrap.Item>
             {isSignOutPage ? null : (

@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import "./Doubleroom.css";
+import React, { useState } from 'react';
+import { Form, Button, Modal } from 'react-bootstrap';
+import axios from 'axios';
+import './Doubleroom.css';
 import DoubleImg from '../images/img2.png';
-import BookingHistory from './BookingHistory';
 
-export default function ReservationForm() {
+export default function DoubleRoom() {
   const [formData, setFormData] = useState({
-    name: "",
-    idNumber: "",
-    phoneNumber: "",
-    checkIn: "",
-    checkOut: "",
-    roomType: "Double Room",
+    name: '',
+    idNumber: '',
+    phoneNumber: '',
+    checkIn: '',
+    checkOut: '',
+    roomType: 'Double Room',
   });
 
-  const [bookingHistory, setBookingHistory] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [reservationStatus, setReservationStatus] = useState(null);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -26,52 +27,69 @@ export default function ReservationForm() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    // Display the modal to confirm reservation
+    setShowModal(true);
+  };
 
-    const reservation = {
-        name: formData.name,
-        idNumber: formData.idNumber,
-        phoneNumber: formData.phoneNumber,
-        roomType: formData.roomType,
-        checkIn: formData.checkIn,
-        checkOut: formData.checkOut,
-    };
+  const handleModalYes = async () => {
+    // Log the form data to the console
+    console.log('Form Data:', formData);
 
     try {
-        // Send a POST request to save the reservation data
-        const response = await fetch('http://localhost:3001/api/reservations', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(reservation),
-        });
+      // Make an API call to your server to save the reservation
+      const response = await axios.post('http://localhost:3001/api/reservations', formData);
 
-        if (response.ok) {
-            console.log('Reservation saved successfully');
-        } else {
-            console.error('Failed to save reservation');
-        }
+      // Assuming your server responds with a success message
+      if (response.data.success) {
+        setReservationStatus('success');
+
+        // Close the modal after 3 seconds
+        setTimeout(() => {
+          // Clear form data after successful submission
+          setFormData({
+            name: '',
+            idNumber: '',
+            phoneNumber: '',
+            checkIn: '',
+            checkOut: '',
+            roomType: 'Double Room',
+          });
+
+          // Close the modal
+          setShowModal(false);
+          // Clear reservation status
+          setReservationStatus(null);
+        }, 3000);
+      } else {
+        // Handle the case where the reservation failed
+        setReservationStatus('failure');
+      }
     } catch (error) {
-        console.error('Error saving reservation:', error);
+      console.error('Error submitting reservation:', error);
+      // Handle errors, setReservationStatus('failure') or display an error message
     }
+  };
 
-    // Update booking history locally
-    setBookingHistory((prevHistory) => [...prevHistory, reservation]);
-
-    // Clear form data after submission
+  const handleCloseModal = () => {
+    // Clear form data after successful submission
     setFormData({
-        name: "",
-        idNumber: "",
-        phoneNumber: "",
-        checkIn: "",
-        checkOut: "",
-        roomType: "Double Room",
+      name: '',
+      idNumber: '',
+      phoneNumber: '',
+      checkIn: '',
+      checkOut: '',
+      roomType: 'Double Room',
     });
-};
+
+    // Close the modal
+    setShowModal(false);
+    // Clear reservation status
+    setReservationStatus(null);
+  };
 
   return (
     <div className="room-container">
-      <img src={DoubleImg} alt="Background" className="background-image" id='singleroom' />
+      <img src={DoubleImg} alt="Background" className="background-image" id='doubleroom' />
       <div className="room-info-container">
         <h2>{formData.roomType}</h2>
         <p>
@@ -154,7 +172,33 @@ export default function ReservationForm() {
           </Button>
         </Form>
       </div>
-      <BookingHistory bookingHistory={bookingHistory} />
+
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Reservation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {reservationStatus === null ? (
+            <p>Do you want to reserve?</p>
+          ) : (
+            <div className={`reservation-status text-center ${reservationStatus}`}>
+              <p className="model-class">Reserved successfully!</p>
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          {reservationStatus === null ? (
+            <>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                No
+              </Button>
+              <Button variant="primary" onClick={handleModalYes}>
+                Yes
+              </Button>
+            </>
+          ) : null}
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
