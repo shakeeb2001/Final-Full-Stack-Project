@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import './home.css';
 import Footer from '../component/footer';
@@ -14,20 +14,24 @@ import BackgroundVideo from '../images/backvideo.mp4';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-
 export default function Home() {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // Simulating login for demonstration purposes
     setIsLoggedIn(true);
   }, []);
 
   const handleLogin = () => {
-    setIsLoggedIn(true);
+    // If the user is logged in, navigate to the 'roomtype' page
+    if (isLoggedIn===true) {
+      navigate('/roomtype');
+    } else {
+      // If the user is not logged in, navigate to the 'login' page
+      navigate('/login');
+    }
   };
-
-
 
   const settings = {
     dots: true,
@@ -50,7 +54,9 @@ export default function Home() {
               Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
               stands as a beacon of hospitality along the coastline of Colombo.
               {isLoggedIn ? (
-                <button className="btn btn-secondary">Book Now</button>
+                <button className="btn btn-secondary" onClick={handleLogin}>
+                  Book Now
+                </button>
               ) : (
                 <Link to='/roomtype' className="btn btn-secondary" onClick={handleLogin}>
                   Log in to Book Now
@@ -63,8 +69,7 @@ export default function Home() {
       </div>
 
       <div className="Container2" id="events-container">
-
-      <h1 className="h1-event">Upcoming Events</h1>
+        <h1 className="h1-event">Upcoming Events</h1>
         <video autoPlay loop muted className="background-video">
           <source src={BackgroundVideo} type="video/mp4" />
           Your browser does not support the video tag.
@@ -76,7 +81,6 @@ export default function Home() {
             <div className="card">
               <div className="card-body-event">
                 <h3>Engagement</h3>
-              
                 <Link to='/event'><img src={EventImageOne} alt="Background" className="event-image-two img-fluid" /></Link>
               </div>
             </div>
@@ -91,10 +95,9 @@ export default function Home() {
             </div>
           </div>
           <div>
-          <div className="card">
+            <div className="card">
               <div className="card-body-event">
                 <h3>Engagement</h3>
-
                 <Link to='/event'><img src={EventImageThree} alt="Background" className="event-image-two img-fluid" /></Link>
               </div>
             </div>
@@ -110,38 +113,38 @@ export default function Home() {
       <div className="Container3" id="dining-container">
         <h1 className="h1-dining">Dining at Crystel Cascade</h1>
         <div className="row">
-        <div className="col-md-4">
+          <div className="col-md-4">
             <div className="card dining-card">
               <img src={DinningimgOne} className="card-img-top-dinning02" alt="Dining" />
               <div className="card-body">
                 <h5 className="card-title">Cafe</h5>
                 <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
                 <Link to="/dining" className="btn btn-secondary">
-                   See More
+                  See More
                 </Link>
               </div>
             </div>
           </div>
           <div className="col-md-4">
-          <div className="card dining-card">
+            <div className="card dining-card">
               <img src={DinningimgTwo} className="card-img-top-dinning02" alt="Dining" />
               <div className="card-body">
                 <h5 className="card-title">Cafe</h5>
                 <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
                 <Link to="/dining" className="btn btn-secondary">
-                   See More
+                  See More
                 </Link>
               </div>
             </div>
           </div>
           <div className="col-md-4">
-          <div className="card dining-card">
+            <div className="card dining-card">
               <img src={DinningimgThree} className="card-img-top-dinning02" alt="Dining" />
               <div className="card-body">
                 <h5 className="card-title">Cafe</h5>
                 <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
                 <Link to="/dining" className="btn btn-secondary">
-                   See More
+                  See More
                 </Link>
               </div>
             </div>
@@ -150,10 +153,8 @@ export default function Home() {
       </div>
 
       <div id="footer-container">
-       <Footer />
+        <Footer />
       </div>
-
-
-     </div>
+    </div>
   );
-  }
+}

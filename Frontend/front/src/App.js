@@ -14,35 +14,58 @@ import DoubleRoom from "./pages/Doubleroom";
 import Event from "./pages/event";
 import BookingHistory from "./pages/BookingHistory";
 import Dining from "./pages/Dining";
+import Profile from "./pages/profile";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    return storedLoginStatus ? JSON.parse(storedLoginStatus) : false;
+  });
 
+  const [isAdmin, setIsAdmin] = useState(() => {
+    const storedAdminStatus = localStorage.getItem('isAdmin');
+    return storedAdminStatus ? JSON.parse(storedAdminStatus) : false;
+  });
+
+  const [username, setUsername] = useState(() => {
+    return localStorage.getItem('username') || '';
+  });
+
+  const handleLoginStatusUpdate = (status, admin, username) => {
+    setIsLoggedIn(status);
+    setIsAdmin(admin);
+    setUsername(username);
+
+    // Save the login status in local storage
+    localStorage.setItem('isLoggedIn', JSON.stringify(status));
+    localStorage.setItem('isAdmin', JSON.stringify(admin));
+    localStorage.setItem('username', username);
+  };
+
+  // useEffect to clear local storage on sign out
   useEffect(() => {
-    // Check local storage for login status and isAdmin
-    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
-    const storedIsAdmin = localStorage.getItem('isAdmin');
-
-    // Update state based on local storage values
-    setIsLoggedIn(storedIsLoggedIn === 'true');
-    setIsAdmin(storedIsAdmin === 'true');
-  }, []);
+    if (!isLoggedIn) {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('isAdmin');
+      localStorage.removeItem('username');
+    }
+  }, [isLoggedIn]);
 
   return (
     <div>
       <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn} updateLoginStatus={setIsLoggedIn} isAdmin={isAdmin} />
+        <Navbar isLoggedIn={isLoggedIn} updateLoginStatus={handleLoginStatusUpdate} isAdmin={isAdmin} username={username} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home isLoggedIn={isLoggedIn} /> } />
           <Route path="/roomtype" element={<RoomType />} />
           <Route path="/bookinghistory" element={<BookingHistory />} />
           <Route path="/deluxroom" element={<DeluxRoom />} />
           <Route path="/singleroom" element={<SingleRoom />} />
           <Route path="/doubleroom" element={<DoubleRoom />} />
-          <Route path="/event" element={<Event isAdmin={isAdmin}/>} />
+          <Route path="/event" element={<Event isAdmin={isAdmin} />} />
           <Route path="/dining" element={<Dining isAdmin={isAdmin} />} />
-          <Route path="/login" element={<Login updateLoginStatus={(status, admin) => { setIsLoggedIn(status); setIsAdmin(admin); }} />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login updateLoginStatus={handleLoginStatusUpdate} />} />
           <Route path="/signout" element={<Signout updateLoginStatus={setIsLoggedIn} setIsAdmin={setIsAdmin} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>

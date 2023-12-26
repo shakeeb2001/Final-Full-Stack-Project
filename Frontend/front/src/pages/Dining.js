@@ -126,12 +126,14 @@ useEffect(() => {
   };
 
   return (
-    <div className="container">
-      {isAdmin && (
+    <div>
+       {isAdmin && (
         <Button variant="primary" className="btn-btn-add btn-secondary" onClick={handleShowModal}>
           Add
         </Button>
       )}
+
+    <div className="container">
 
       {cards.map((card, index) => (
         <Card key={index} className="card1">
@@ -190,6 +192,7 @@ useEffect(() => {
           </Button>
         </Modal.Footer>
       </Modal>
+    </div>
     </div>
   );
 };

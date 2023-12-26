@@ -64,7 +64,7 @@ useEffect(() => {
   };
 
   return (
-    <div className='Container-lg'>
+    <div className='container-xl'>
       <h1>Booking History</h1>
       <div className="form-control sm-2 d-flex">
         <input 
@@ -105,10 +105,10 @@ useEffect(() => {
               <td>{reservation.checkIn}</td>
               <td>{reservation.checkOut}</td>
               <td>
-                <button className='btn btn-danger' onClick={() => handleDelete(reservation._id)}>
+                <button className='btn btn-danger' id='booking-delete' onClick={() => handleDelete(reservation._id)}>
                   Delete
                 </button>
-                <button className='btn btn-warning' onClick={() => handleEdit(reservation._id)}>
+                <button className='btn btn-warning' id='booking-edit' onClick={() => handleEdit(reservation._id)}>
                   Edit
                 </button>
               </td>

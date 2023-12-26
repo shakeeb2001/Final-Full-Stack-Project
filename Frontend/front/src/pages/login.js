@@ -1,3 +1,4 @@
+// Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
@@ -21,7 +22,7 @@ export default function Login({ updateLoginStatus }) {
         if (result.data === 'success') {
           const isAdmin = username === 'admin' && password === '1234';
           console.log('Login successful. isAdmin:', isAdmin);
-          updateLoginStatus(true, isAdmin);
+          updateLoginStatus(true, isAdmin, username);
           navigate('/');
         } else {
           console.log('Login failed');

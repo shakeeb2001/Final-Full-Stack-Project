@@ -2,7 +2,7 @@ body {
     background-color: rgb(2, 31, 43);
 }
 
-.Container {
+.container-xl {
     width: 80%;
     height: 500px;
     margin-left: 150px;
@@ -25,4 +25,5 @@ h1 {
 
 .thead {
     color: white; /* Set the text color for table headers */
+    text-align: center;
 }

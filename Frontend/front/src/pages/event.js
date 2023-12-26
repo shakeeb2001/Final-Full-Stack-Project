@@ -124,13 +124,16 @@ useEffect(() => {
 }, [isAdmin]);
 
   return (
-    <div className="container">
+    <div>
+      <div className="container-add-btn">
       {isAdmin && (
-        <Button variant="primary" className="btn-btn-add btn-secondary" onClick={handleShowModal}>
+        <Button variant="primary" className="add-button" onClick={handleShowModal}>
           Add
         </Button>
       )}
-
+        </div>
+    <div className="container">
+  
        {cards.map((card, index) => (
         <Card key={index} className="card1">
           <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
@@ -188,6 +191,7 @@ useEffect(() => {
           </Button>
         </Modal.Footer>
       </Modal>
+    </div>
     </div>
   );
 };

@@ -1,55 +1,39 @@
-
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80%; 
-    margin-top: 7%;
-    background-color: rgba(154, 154, 154, 0.1);
-    border-radius: 5px;
-    overflow-y: auto; 
-  }
-  
-  .card1 {
-    width: 70rem;
-    height: 600px;
-    margin: 30px;
-  }
-  
-  .card1 img {
-    height: 400px;
-    object-fit: cover;
-  }
-  
-  .card1 .card-title {
-    font-size: 24px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  
-  .card1 .card-text {
-    font-size: 16px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
-  
-  .btn-btn-add {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
-  }
-  
-  .add-button {
-    background-color: black;
-    border: none;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  @media (max-height: 600px) {
-    .container {
-      height: auto;
-    }
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 370vh;
+  margin-bottom: 50px; /* Adjust this value to reduce the space */
+}
+
+.card1 {
+  width: 60rem;
+  height: 600px;
+  margin: 30px;
+}
+
+.card1 img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.card1 .card-title {
+  font-size: 24px; 
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card1 .card-text {
+  font-size: 16px; 
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.add-button {
+  background-color: rgb(162, 162, 162);
+  border: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 85%;
+  margin-top: 50px;
+}
