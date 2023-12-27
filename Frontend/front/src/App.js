@@ -60,7 +60,7 @@ function App() {
           <Route path="/roomtype" element={<RoomType />} />
           <Route path="/bookinghistory" element={<BookingHistory />} />
           <Route path="/deluxroom" element={<DeluxRoom />} />
-          <Route path="/singleroom" element={<SingleRoom />} />
+          <Route path="/singleroom" element={<SingleRoom isLoggedIn={isLoggedIn} />} />
           <Route path="/doubleroom" element={<DoubleRoom />} />
           <Route path="/event" element={<Event isAdmin={isAdmin} />} />
           <Route path="/dining" element={<Dining isAdmin={isAdmin} />} />

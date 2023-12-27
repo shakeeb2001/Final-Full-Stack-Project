@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Singleroom.css';
 import SingleImg from '../images/img1.png';
 
-export default function SingleRoom() {
+export default function SingleRoom({ isLoggedIn }) {
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
   const [formData, setFormData] = useState({
     name: '',
     idNumber: '',
@@ -27,8 +30,15 @@ export default function SingleRoom() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Display the modal to confirm reservation
-    setShowModal(true);
+
+    // Check if the user is logged in
+    if (isLoggedIn) {
+      // Display the modal to confirm reservation
+      setShowModal(true);
+    } else {
+      // If not logged in, navigate to the login page
+      navigate('/login');
+    }
   };
 
   const handleModalYes = async () => {
@@ -89,7 +99,7 @@ export default function SingleRoom() {
 
   return (
     <div className="room-container">
-      <img src={SingleImg} alt="Background" className="background-image" id='singleroom' />
+      <img src={SingleImg} alt="Background" className="background-image" id="singleroom" />
       <div className="room-info-container">
         <h2>Single Room</h2>
         <p>
@@ -98,8 +108,8 @@ export default function SingleRoom() {
         </p>
         <div className="room-details">
           <p className="guest-info">
-            No of Guests: <span>1</span>| Room Size: <span>20 m²</span>|Bed
-            Size: <span>Small Double</span> |Private Bath: <span>1</span>
+            No of Guests: <span>1</span>| Room Size: <span>20 m²</span>|Bed Size: <span>Small Double</span> |Private
+            Bath: <span>1</span>
           </p>
           <ul>
             <li>Wifi</li>
@@ -111,66 +121,64 @@ export default function SingleRoom() {
             <li>Pet Friendly</li>
           </ul>
         </div>
-        <img src={SingleImg} alt="Additional" className="additional-image" id='deluxroom' />
+        <img src={SingleImg} alt="Additional" className="additional-image" id="deluxroom" />
       </div>
       <div className="reservation-form-container">
-        <Form onSubmit={handleFormSubmit}>
-          <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter your name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+        {isLoggedIn ? (
+          <Form onSubmit={handleFormSubmit}>
+            <Form.Group controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="idNumber">
-            <Form.Label>National ID</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter The NIC Number"
-              value={formData.idNumber}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+            <Form.Group controlId="idNumber">
+              <Form.Label>National ID</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter The NIC Number"
+                value={formData.idNumber}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="phoneNumber">
-            <Form.Label>Telephone Number</Form.Label>
-            <Form.Control
-              type="tel"
-              placeholder="Enter your phone number"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+            <Form.Group controlId="phoneNumber">
+              <Form.Label>Telephone Number</Form.Label>
+              <Form.Control
+                type="tel"
+                placeholder="Enter your phone number"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="checkIn">
-            <Form.Label>Check In</Form.Label>
-            <Form.Control
-              type="date"
-              value={formData.checkIn}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+            <Form.Group controlId="checkIn">
+              <Form.Label>Check In</Form.Label>
+              <Form.Control type="date" value={formData.checkIn} onChange={handleInputChange} />
+            </Form.Group>
 
-          <Form.Group controlId="checkOut">
-            <Form.Label>Check Out</Form.Label>
-            <Form.Control
-              type="date"
-              value={formData.checkOut}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+            <Form.Group controlId="checkOut">
+              <Form.Label>Check Out</Form.Label>
+              <Form.Control type="date" value={formData.checkOut} onChange={handleInputChange} />
+            </Form.Group>
 
-          <Form.Group controlId="roomType" style={{ display: "none" }}>
-            <Form.Control type="text" value={formData.roomType} readOnly />
-          </Form.Group>
+            <Form.Group controlId="roomType" style={{ display: 'none' }}>
+              <Form.Control type="text" value={formData.roomType} readOnly />
+            </Form.Group>
 
-          <Button variant="dark" type="submit">
-            Reserve
-          </Button>
-        </Form>
+            <Button variant="dark" type="submit">
+              Reserve
+            </Button>
+          </Form>
+        ) : (
+          <p className="login-message">
+            Please <span onClick={() => navigate('/login')} className="login-link">login</span> to reserve a room.
+          </p>
+        )}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} centered>
