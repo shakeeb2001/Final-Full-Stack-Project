@@ -1,11 +1,16 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Room.css";
+import Navbar from "../Component/Navbar";
 
 
 export default function ReservationForm() {
   return (
+  <div>
+  <Navbar />
+ 
     <div className="room-container">
+    
       {/* Background Image */}
       <img
         src={process.env.PUBLIC_URL + "Images/img1.png"}
@@ -71,5 +76,7 @@ export default function ReservationForm() {
         </Form>
       </div>
     </div>
+   </div>
+  
   )
 }

@@ -45,6 +45,7 @@
   transition: transform 0.2s ease-in-out;
   width: 400px;
   height: 350px;
+  
 }
 
 .card:hover {
