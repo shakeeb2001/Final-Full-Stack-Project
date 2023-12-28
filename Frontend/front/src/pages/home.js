@@ -5,7 +5,7 @@ import './home.css';
 import Background from '../images/Hotel.png';
 import EventImageOne from '../images/engagement.png';
 import EventImageTwo from '../images/wedding.png';
-import EventImageThree from '../images/birthday.png';
+import EventImageThree from '../images/meeting.png';
 import DinningimgOne from '../images/dinning01.webp';
 import DinningimgTwo from '../images/dinning02.webp';
 import DinningimgThree from '../images/dinning03.jpeg';
@@ -51,7 +51,7 @@ export default function Home() {
               stands as a beacon of hospitality along the coastline of Colombo.
               <br></br>
               {isLoggedIn ? (
-                <button className="btn btn-secondary custome" onClick={handleLogin} id='home-booknow'>
+                <button className="btn btn-secondary-booknow" onClick={handleLogin} >
                   Book Now
                 </button>
               ) : (
@@ -74,28 +74,29 @@ export default function Home() {
 
         <br></br>
         <Slider {...settings}>
-          <div>
+          <div className="event-card-adj">
             <div className="card">
               <div className="card-body-event">
                 <h3>Engagement</h3>
+                <h4>Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
+              stands as a beacon of hospitality along the coastline of Colombo.</h4>
                 <Link to='/event'><img src={EventImageOne} alt="Background" className="event-image-two img-fluid" /></Link>
               </div>
             </div>
           </div>
-          <div>
+          <div className="event-card-adj">
             <div className="card">
               <div className="card-body-event">
                 <h3>Wedding</h3>
-                <h4>The Sri Lankan Surf Federation was established in 2017 and the inaugural edition of the National Surf Championship was held in 2018. The winner of the 2018 Sri Lankan National Surf Championship went onto qualify and participate at the 2019 IAS World Surfing Games which was held in Japan. It also marked the first-ever instance that a delegation from Sri Lanka had competed in the World Surfing Games. Sri Lanka alongside Lebanon, Thailand, and American Samoa also made their debuts at the World Surfing Games during the 2019 edition</h4>
-                <Link to='/event'><img src={EventImageTwo} alt="Background" className="event-image-two img-fluid" /></Link>
+                <Link to='/event'><img src={EventImageTwo} alt="Background" className="event-image-one img-fluid" /></Link>
               </div>
             </div>
           </div>
-          <div>
+          <div className="event-card-adj">
             <div className="card">
               <div className="card-body-event">
-                <h3>Engagement</h3>
-                <Link to='/event'><img src={EventImageThree} alt="Background" className="event-image-two img-fluid" /></Link>
+                <h3>Meetings</h3>
+                <Link to='/event'><img src={EventImageThree} alt="Background" className="event-image-one img-fluid" /></Link>
               </div>
             </div>
           </div>

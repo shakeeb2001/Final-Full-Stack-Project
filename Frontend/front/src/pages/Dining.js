@@ -128,7 +128,7 @@ useEffect(() => {
   return (
     <div>
        {isAdmin && (
-        <Button variant="primary" className="btn" onClick={handleShowModal}>
+        <Button variant="primary" className="add-button" onClick={handleShowModal}>
           Add
         </Button>
       )}
@@ -143,7 +143,7 @@ useEffect(() => {
             <Card.Text>{card.description}</Card.Text>
 
             {isAdmin && (
-              <Button variant="danger" onClick={() => handleDeleteCard(card._id)}>
+              <Button variant="secondary" onClick={() => handleDeleteCard(card._id)}>
                 Delete
               </Button>
             )}

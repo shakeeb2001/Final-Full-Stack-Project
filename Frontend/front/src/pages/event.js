@@ -141,7 +141,7 @@ useEffect(() => {
             <Card.Title>{card.title}</Card.Title>
             <Card.Text>{card.description}</Card.Text>
             {isAdmin && (
-              <Button variant="danger" onClick={() => handleDeleteCard(card._id)}>
+              <Button variant="secondary" onClick={() => handleDeleteCard(card._id)}>
                 Delete
               </Button>
             )}
@@ -186,7 +186,7 @@ useEffect(() => {
           <Button variant="secondary" onClick={handleCloseModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleAddCard}>
+          <Button variant="secondary" onClick={handleAddCard}>
             Add Card
           </Button>
         </Modal.Footer>

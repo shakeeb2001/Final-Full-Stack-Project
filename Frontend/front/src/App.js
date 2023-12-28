@@ -16,7 +16,6 @@ import Dining from "./pages/Dining";
 import Profile from "./pages/profile";
 import Footer from "./component/footer";
 
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     const storedLoginStatus = localStorage.getItem('isLoggedIn');
@@ -51,6 +50,7 @@ function App() {
       localStorage.removeItem('username');
     }
   }, [isLoggedIn]);
+
 
   return (
     <div>

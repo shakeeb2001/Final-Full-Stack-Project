@@ -153,7 +153,7 @@ export default function BookingHistory() {
           onChange={handleSearchInputChange}
         />
         <button
-          className="btn btn-secondary"
+          className="btn btn-secondary-search"
           type="button"
           onClick={handleFindById}
         >
@@ -260,10 +260,10 @@ export default function BookingHistory() {
                   </>
                 ) : (
                   <>
-                    <button className='btn' id='booking-delete' onClick={() => handleDelete(reservation._id)}>
+                    <button className='btn btn-secondary1' id='booking-delete' onClick={() => handleDelete(reservation._id)}>
                       Delete
                     </button>
-                    <button className='btn' id='booking-edit' onClick={() => handleEdit(reservation._id)}>
+                    <button className='btn btn-secondary2' id='booking-edit' onClick={() => handleEdit(reservation._id)}>
                       Edit
                     </button>
                   </>

@@ -11,7 +11,6 @@ export default function Signout({ updateLoginStatus, setIsAdmin }) {
   const navigate = useNavigate();
 
   const handleSignout = () => {
-
     updateLoginStatus(false);
     setIsAdmin(false);
 

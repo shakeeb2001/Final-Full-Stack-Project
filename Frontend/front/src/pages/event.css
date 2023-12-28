@@ -5,8 +5,8 @@
   align-items: center;
   justify-content: center;
   height: 80%; 
-  margin-top: 7%;
-  background-color: rgba(154, 154, 154, 0.1);
+  margin-top: 2%;
+  background-color: rgba(154, 154, 154, 0);
   border-radius: 5px;
   overflow-y: auto; 
 }
@@ -15,6 +15,7 @@
   width: 70rem;
   height: 600px;
   margin: 30px;
+  border: none;
 }
 
 .card1 img {
@@ -41,6 +42,7 @@
   top :120px;
   color: white;
   cursor: pointer;
+  width: 150px;
   
 }
 

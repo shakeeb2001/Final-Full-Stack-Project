@@ -1,29 +1,32 @@
 .room-container {
   display: flex;
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   overflow: hidden;
+  position: relative; /* Add position relative to set a positioning context for absolute children */
 }
 
 .room-info-container {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
   padding: 15px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin: 20px;
-  max-width: 600px;
-
+  max-width: 700px;
+  padding-top: 50px;
   height: 70%;
 }
 
 .room-info-container img.additional-image {
   position: absolute;
   bottom: 5%;
-  right: 10%; 
-  max-width: 55%; /* Make the image responsive */
-  height: auto; /* Maintain aspect ratio */
+  right: 10%;
+  max-width: 55%;
+  height: auto;
 }
 
 .room-details {
@@ -35,20 +38,23 @@
 }
 
 .reservation-form-container {
-  margin: 20px;
-  width: 400px; 
+  position: absolute;
+  top: 50%;
+  margin-left: 88%;
+  transform: translate(-50%, -50%);
+  width: 500px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 20px; 
+  padding: 20px;
   background-color: white;
   height: 70%;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto;
 }
 
-.reservation-form-container form 
-{
+.reservation-form-container form {
   margin-bottom: 15px;
 }
+
 .reservation-form-container form input,
 .reservation-form-container form select {
   width: 100%;
@@ -56,26 +62,19 @@
 
 .reservation-form-container button {
   width: 100%;
-  background-color: black;
+  background-color: rgb(133, 133, 133);
   color: white;
-  border: 1px solid black;
   margin: 10px;
-  margin: 10px 0; 
-
+  border: none;
+  margin: 10px 0;
 }
 
-.background-image {
+.background-image-room {
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 10;
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the image covers the entire container */
-  z-index: -1; /* Place the image behind the content */
-  opacity: 0.6;
-  
-  
-}
-.model-class{
-  color: rgb(44, 170, 86);
+  object-fit: cover;
+  opacity: 0.9;
 }

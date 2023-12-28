@@ -104,7 +104,7 @@ export default function DoubleRoom({ isLoggedIn }) {
 
   return (
     <div className="room-container">
-      <img src={DoubleImg} alt="Background" className="background-image" id="doubleroom" />
+      <img src={DoubleImg} alt="Background" className="background-image-room" id="doubleroom" />
       <div className="room-info-container">
         <h2>Double Room</h2>
         <p>
