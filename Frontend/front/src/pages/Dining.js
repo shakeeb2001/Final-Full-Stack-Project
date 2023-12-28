@@ -128,7 +128,7 @@ useEffect(() => {
   return (
     <div>
        {isAdmin && (
-        <Button variant="primary" className="btn-btn-add btn-secondary" onClick={handleShowModal}>
+        <Button variant="primary" className="btn" onClick={handleShowModal}>
           Add
         </Button>
       )}

@@ -26,7 +26,7 @@ export default function Signout({ updateLoginStatus, setIsAdmin }) {
 
   return (
     <div className='container'>
-      <img src={Background} alt="Background1" className="background-im" />
+      <img src={Background} alt="Background1" className="background-images-signout" />
       <Form className='overlay-form-one'>
         <img src={loginIcon} alt="Login Icon" className="login-icon" />
         <h3>Do You want To Signout......</h3>

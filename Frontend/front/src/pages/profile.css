@@ -1,69 +1,61 @@
-/* Center the h2 and Form */
-h2, form 
+.profile-wrapper 
 {
-text-align: left;  
-} 
-/* Style the profile photo */
-.profile-photo
-{
-width: 100%; /* Make sure the image takes the full width of its container */
-max-width: 200px; /* Set a maximum width for the image */
-height: auto; /* Maintain aspect ratio */
-display: block; /* Center the image */
-margin: 0 auto;
+  margin: 20px;
+  margin-top: 40px; 
+
 }
   
-/* Style the right-aligned buttons */
-.text-right
+.profile-title 
 {
-text-align: right;
+  margin-bottom: 20px;
+  margin-top: 0;
+  color: #ffffff;
 }
   
-/* Style the Edit and Delete buttons */
-.btn-edit
+.form-group
 {
-background-color: #007bff; /* Bootstrap primary color */
-color: #fff; /* White text */
+  margin-bottom: 20px; 
+  padding-left: 300;
+}
+  
+.form-control
+ {
+  font-size: 14px; 
+  padding: 10px; 
+    
+}
+  
+.text-right 
+{
+  margin-top: 20px;
+}
+  
+.dropdownmenu
+{
+  font-size: 12px; 
+  padding: 8px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px; 
 }
 
-.btn-delete 
+.dropdownmenu .btn-primary
 {
-background-color: #dc3545; /* Bootstrap danger color */
-color: #fff; /* White text */
+  background-color: rgba(2, 31, 43);
+  border-color: rgba(2, 31, 43); 
+  color: #ffffff;
+}
+  
+.text-right 
+{
+  margin-left: 32%;
 }
 
-/* Optional: Add some margin to the buttons for spacing */
-.text-right button 
+.text-right .btn-primary 
 {
-margin-left: 10px;
+  margin-right: 10px; 
 }
-
-/* Style for the enterid input and search icon */
-.enterid-container
-{
-position: relative;
-}
-
-.enterid 
-{
-font-size: 12px; /* Adjust the font size as needed */
-padding: 10px;
-width: 20%;
-margin-left: 80%;
-}
-
-.searchicon
-{
-position: absolute;
-right: 10px; /* Adjust the right spacing of the search icon */
-top: 50%;
-transform: translateY(-50%);
-cursor: pointer;
-}
-
-/* Add some margin to the form groups for spacing */
-.form-group 
-{
-margin-bottom: 15%; /* Adjust the margin as needed */
-gap: 10%;
+.mb-3{
+    color: #ffffff;
 }

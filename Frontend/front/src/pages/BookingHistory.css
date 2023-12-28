@@ -4,7 +4,6 @@ body {
 
 .container-xl {
     width: 80%;
-    height: 500px;
     margin-left: 150px;
     margin-top: 50px;
     padding: 10px;
@@ -25,5 +24,21 @@ h1 {
 
 .thead {
     color: white; /* Set the text color for table headers */
+    text-align: center;
+}
+
+
+.highlighted-row {
+    background-color: yellow; /* Change the background color as needed */
+  }
+  
+.btn{
+    background-color: rgb(44, 89, 128);
+    width: 100px;
+    margin: 3px;
+    align-items: center;
+    font-size: small;
+}
+.table-group-divider{
     text-align: center;
 }

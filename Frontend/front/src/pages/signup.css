@@ -1,4 +1,4 @@
-body, html {
+body {
     height: 100%;
     margin: 0;
     background-color: rgb(2, 31, 43);
@@ -6,8 +6,10 @@ body, html {
 
 .container {
     position: relative;
-    height: 100vh;
+    width: 100%;
+    height: 90vh;
     overflow: hidden;
+    margin-top: -100px;
 }
 
 .background-img {
@@ -25,12 +27,11 @@ body, html {
     color: rgb(255, 255, 255);
     font-weight: 500;
     position: absolute;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
-    margin-top: -30px;
+    margin-top: -40px;
     text-align: left;
+    padding-bottom: 30px;
+    margin-left: 2px;
 }
 
 .overlay-form:before {
@@ -40,7 +41,7 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.0); /* Slightly transparent background */
+    background: rgba(255, 255, 255, 0.0);
     border-radius: 10px;
     z-index: -1;
 }

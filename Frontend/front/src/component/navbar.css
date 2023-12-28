@@ -2,9 +2,8 @@
 
 .justify-content-center {
   display: flex;
-  background-color: rgba(2, 31, 43);
+  background-color: rgb(3, 39, 55);
   padding-left: 220px;
-  margin-bottom: -40px;
   justify-content: space-between;
   align-items: center;
   height: 100px;
@@ -17,14 +16,13 @@
   right: 220px;
 }
 
-/* Style the Nav links */
 .nav-links {
   display: flex;
   text-align: center;
 }
 
 .nav-link {
-  color: rgb(172, 170, 170);
+  color: rgb(172, 170, 170) !important;
   font-weight: bold;
   margin: 0 10px;
   text-decoration: none;
@@ -33,10 +31,46 @@
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
-/* Style the active Nav link */
-.nav-link.active {
-  color: #ffffff; /* Set the active link color to white */
+/* Override styling for the active Nav link provided by React Bootstrap */
+.navbar-nav .nav-item .nav-link.active,
+.navbar-nav .nav-item .nav-link:focus,
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ffffff !important; /* Set the active link color to white with !important */
+  background-color: transparent !important;
+}
+
+/* Remove default active styles for specific links */
+.nav-item .nav-link.active.event,
+.nav-item .nav-link.active.dining,
+.nav-item .nav-link.active.about-us {
+  color: inherit !important; /* Inherit the color from the parent */
+  background-color: transparent !important;
+}
+
+/* Move Sign In tab to the right corner */
+.navbar-nav .nav-item {
+  margin-left: auto !important ;
+}
+
+.nav-link-signin{
+  margin-left: 380px;
+  text-decoration: none;
+  color: rgb(172, 170, 170) !important;
+  font-weight: 600;
+}
+.nav-link-signin:hover {
+  color: #ffffff !important;
+  transition: color 0.3s;
+}
+
+ .nav-link-sign .active {
+  color: #ffffff !important; /* Set the active link color to white with !important */
+  background-color: transparent !important;
+}
+
+.profile-dropdown{
+  margin-left: 500px;
 }

@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,6 +14,8 @@ import Event from "./pages/event";
 import BookingHistory from "./pages/BookingHistory";
 import Dining from "./pages/Dining";
 import Profile from "./pages/profile";
+import Footer from "./component/footer";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -56,19 +57,20 @@ function App() {
       <BrowserRouter>
         <Navbar isLoggedIn={isLoggedIn} updateLoginStatus={handleLoginStatusUpdate} isAdmin={isAdmin} username={username} />
         <Routes>
-          <Route path="/" element={<Home isLoggedIn={isLoggedIn} /> } />
+          <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
           <Route path="/roomtype" element={<RoomType />} />
           <Route path="/bookinghistory" element={<BookingHistory />} />
-          <Route path="/deluxroom" element={<DeluxRoom />} />
+          <Route path="/deluxroom" element={<DeluxRoom isLoggedIn={isLoggedIn} />} />
           <Route path="/singleroom" element={<SingleRoom isLoggedIn={isLoggedIn} />} />
-          <Route path="/doubleroom" element={<DoubleRoom />} />
+          <Route path="/doubleroom" element={<DoubleRoom isLoggedIn={isLoggedIn} />} />
           <Route path="/event" element={<Event isAdmin={isAdmin} />} />
           <Route path="/dining" element={<Dining isAdmin={isAdmin} />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile user={username} />} />
           <Route path="/login" element={<Login updateLoginStatus={handleLoginStatusUpdate} />} />
           <Route path="/signout" element={<Signout updateLoginStatus={setIsLoggedIn} setIsAdmin={setIsAdmin} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );

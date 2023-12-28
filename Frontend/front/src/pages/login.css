@@ -1,22 +1,19 @@
-/* styles.css */
+
 
 body {
     height: 100%;
     margin: 0;
     background-color: rgb(2, 31, 43);
-    
 }
 
-.container {
+#login-container .container {
     width: 100%;
-
     position: relative;
     text-align: center;
     height: 90vh;
     overflow: hidden;
-    
 }
-.background-images {
+#login-container .background-images {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -86,3 +83,15 @@ h2 {
     right: 20px;
   }
   
+.signup-link{
+    text-align: center;
+    color: rgb(187, 186, 186);
+}
+.signup-link-route{
+    text-decoration: none;
+    color: rgb(187, 186, 186);
+}
+
+.signup-link-route:hover{
+    color: aliceblue;
+}

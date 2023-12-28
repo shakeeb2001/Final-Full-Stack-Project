@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Doubleroom.css';
 import DoubleImg from '../images/img2.png';
 
-export default function DoubleRoom() {
+export default function DoubleRoom({ isLoggedIn }) {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     idNumber: '',
@@ -12,6 +15,7 @@ export default function DoubleRoom() {
     checkIn: '',
     checkOut: '',
     roomType: 'Double Room',
+  
   });
 
   const [showModal, setShowModal] = useState(false);
@@ -23,83 +27,94 @@ export default function DoubleRoom() {
       ...prevData,
       [id]: value,
     }));
+
+    if (id === 'cardNumber') {
+      const firstDigit = value.charAt(0);
+      if (firstDigit === '4') {
+        setFormData((prevData) => ({ ...prevData, cardType: 'Visa' }));
+      } else if (firstDigit === '5') {
+        setFormData((prevData) => ({ ...prevData, cardType: 'MasterCard' }));
+      } else {
+        setFormData((prevData) => ({ ...prevData, cardType: '' }));
+      }
+    }
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Display the modal to confirm reservation
-    setShowModal(true);
+
+    const requiredFields = ['name', 'idNumber', 'phoneNumber', 'checkIn', 'checkOut', 'paymentMethod'];
+
+    const isFormValid = requiredFields.every((field) => formData[field].trim() !== '');
+
+    if (!isFormValid) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    if (isLoggedIn) {
+      setShowModal(true);
+    } else {
+      navigate('/login');
+    }
   };
 
   const handleModalYes = async () => {
-    // Log the form data to the console
     console.log('Form Data:', formData);
 
     try {
-      // Make an API call to your server to save the reservation
       const response = await axios.post('http://localhost:3001/api/reservations', formData);
-
-      // Assuming your server responds with a success message
       if (response.data.success) {
         setReservationStatus('success');
 
-        // Close the modal after 3 seconds
         setTimeout(() => {
-          // Clear form data after successful submission
           setFormData({
             name: '',
             idNumber: '',
             phoneNumber: '',
             checkIn: '',
             checkOut: '',
-            roomType: 'Double Room',
+            roomType: 'Delux Room',
           });
 
-          // Close the modal
           setShowModal(false);
-          // Clear reservation status
           setReservationStatus(null);
         }, 3000);
       } else {
-        // Handle the case where the reservation failed
         setReservationStatus('failure');
       }
     } catch (error) {
       console.error('Error submitting reservation:', error);
-      // Handle errors, setReservationStatus('failure') or display an error message
     }
   };
 
   const handleCloseModal = () => {
-    // Clear form data after successful submission
     setFormData({
       name: '',
       idNumber: '',
       phoneNumber: '',
       checkIn: '',
       checkOut: '',
-      roomType: 'Double Room',
+      roomType: 'Delux Room'
     });
 
-    // Close the modal
     setShowModal(false);
-    // Clear reservation status
     setReservationStatus(null);
   };
 
   return (
     <div className="room-container">
-      <img src={DoubleImg} alt="Background" className="background-image" id='doubleroom' />
+      <img src={DoubleImg} alt="Background" className="background-image" id="doubleroom" />
       <div className="room-info-container">
-        <h2>{formData.roomType}</h2>
+        <h2>Double Room</h2>
         <p>
-          Deluxe Single Room is only reserved for one guest. There is a bedroom with a
-          small double-size bed and a private bathroom.
+          Double Room is can reserved for four guests. There is a bedroom with a
+          double-size two beds and a private bathroom.
         </p>
         <div className="room-details">
           <p className="guest-info">
-            No of Guests: <span>1</span>| Room Size: <span>20 m²</span>|Bed
-            Size: <span>Small Double</span> |Private Bath: <span>1</span>
+            No of Guests: <span>4</span>| Room Size: <span>40 m²</span>|Bed
+            Size: <span>Two Double</span> |Private Bath: <span>1</span>
           </p>
           <ul>
             <li>Wifi</li>
@@ -111,66 +126,114 @@ export default function DoubleRoom() {
             <li>Pet Friendly</li>
           </ul>
         </div>
-        <img src={DoubleImg} alt="Additional" className="additional-image" id='deluxroom' />
+        <img src={DoubleImg} alt="Additional" className="additional-image" id="deluxroom" />
       </div>
       <div className="reservation-form-container">
-        <Form onSubmit={handleFormSubmit}>
-          <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter your name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+        {isLoggedIn ? (
+          <Form onSubmit={handleFormSubmit}>
+            <Form.Group controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="idNumber">
+              <Form.Label>National ID</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter The NIC Number"
+                value={formData.idNumber}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="idNumber">
-            <Form.Label>National ID</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter The NIC Number"
-              value={formData.idNumber}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+            <Form.Group controlId="phoneNumber">
+              <Form.Label>Telephone Number</Form.Label>
+              <Form.Control
+                type="tel"
+                placeholder="Enter your phone number"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="phoneNumber">
-            <Form.Label>Telephone Number</Form.Label>
-            <Form.Control
-              type="tel"
-              placeholder="Enter your phone number"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+            <Form.Group controlId="checkIn">
+              <Form.Label>Check In</Form.Label>
+              <Form.Control type="date" value={formData.checkIn} onChange={handleInputChange} />
+            </Form.Group>
 
-          <Form.Group controlId="checkIn">
-            <Form.Label>Check In</Form.Label>
-            <Form.Control
-              type="date"
-              value={formData.checkIn}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+            <Form.Group controlId="checkOut">
+              <Form.Label>Check Out</Form.Label>
+              <Form.Control type="date" value={formData.checkOut} onChange={handleInputChange} />
+            </Form.Group>
 
-          <Form.Group controlId="checkOut">
-            <Form.Label>Check Out</Form.Label>
-            <Form.Control
-              type="date"
-              value={formData.checkOut}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+            <Form.Group controlId="roomType" style={{ display: 'none' }}>
+              <Form.Control type="text" value={formData.roomType} readOnly />
+            </Form.Group>
 
-          <Form.Group controlId="roomType" style={{ display: "none" }}>
-            <Form.Control type="text" value={formData.roomType} readOnly />
-          </Form.Group>
+            <Form.Group controlId="paymentMethod">
+              <Form.Label>Payment Method</Form.Label>
+              <Form.Control
+                as="select"
+                value={formData.paymentMethod}
+                onChange={handleInputChange}
+              >
+                <option value="">Select Payment Method</option>
+                <option value="creditCard">Credit Card</option>
+                <option value="debitCard">Debit Card</option>
+              </Form.Control>
+            </Form.Group>
 
-          <Button variant="dark" type="submit">
-            Reserve
-          </Button>
-        </Form>
+            {formData.paymentMethod === 'creditCard' || formData.paymentMethod === 'debitCard' ? (
+              <>
+                <Form.Group controlId="cardNumber">
+                  <Form.Label>Card Number</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter card number"
+                    value={formData.cardNumber}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="cardHolderName">
+                  <Form.Label>Card Holder Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter card holder name"
+                    value={formData.cardHolderName}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="cvc">
+                  <Form.Label>CVC</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter CVC"
+                    value={formData.cvc}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+
+                {formData.cardType && (
+                  <p>Card Type: {formData.cardType}</p>
+                )}
+              </>
+            ) : null}
+
+            <Button variant="dark" type="submit">
+              Reserve
+            </Button>
+          </Form>
+        ) : (
+          <p className="login-message">
+            Please <span onClick={() => navigate('/login')} className="login-link">login</span> to reserve a room.
+          </p>
+        )}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} centered>

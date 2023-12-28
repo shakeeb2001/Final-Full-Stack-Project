@@ -1,6 +1,6 @@
 // Navbar.js
 import React from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import NavBootstrap from 'react-bootstrap/Nav';
 import NavbarBootstrap from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -43,62 +43,58 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
     <>
       <NavbarBootstrap className='nav justify-content-center' expand="lg">
         <NavbarBootstrap.Brand>
-          <Link to="/" className="nav-link">
+          <NavLink to="/">
             <img src={loginIcon} alt="Logo" className="logo-icon" />
-          </Link>
+          </NavLink>
         </NavbarBootstrap.Brand>
         <NavbarBootstrap.Toggle aria-controls="basic-navbar-nav" />
         <NavbarBootstrap.Collapse id="basic-navbar-nav">
           <NavBootstrap className="mr-auto">
             <NavBootstrap.Item>
-              <Link to="/" className="nav-link">
+              <NavLink to="/" className="nav-link" activeClassName="active">
                 Home
-              </Link>
+              </NavLink>
             </NavBootstrap.Item>
             <NavBootstrap.Item>
-              <Link to="/roomtype" className="nav-link">
+              <NavLink to="/roomtype" className="nav-link" activeClassName="active">
                 Accommodations
-              </Link>
+              </NavLink>
             </NavBootstrap.Item>
             <NavBootstrap.Item onClick={handleScrollToEvents}>
-              <Link to="/#Container2" className="nav-link">
+              <NavLink to="/#Container2" className="nav-link" activeClassName="event" >
                 Events
-              </Link>
+              </NavLink>
             </NavBootstrap.Item>
             <NavBootstrap.Item onClick={handleScrollToDining}>
-              <Link to="/#Container3" className="nav-link">
+              <NavLink to="/#Container3" className="nav-link" activeClassName="dining" >
                 Dining
-              </Link>
+              </NavLink>
             </NavBootstrap.Item>
             {isAdmin && (
               <NavBootstrap.Item>
-                <Link to="/bookinghistory" className="nav-link">
+                <NavLink to="/bookinghistory" className="nav-link" activeClassName="active">
                   Booking History
-                </Link>
+                </NavLink>
               </NavBootstrap.Item>
             )}
             <NavBootstrap.Item>
-              <Link to="/#" className="nav-link" onClick={handleScrollToAboutus}>
+              <NavLink to="/#" className="nav-link" onClick={handleScrollToAboutus} activeClassName="active" >
                 About Us
-              </Link>
+              </NavLink>
             </NavBootstrap.Item>
           </NavBootstrap>
           <NavBootstrap>
             {isLoggedIn ? (
-              <NavDropdown title={username ? `Hi ${username}` : ''} id="basic-nav-dropdown">
+              <NavDropdown className="profile-dropdown" title={username ? `Hi ${username}` : ''} id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={handleSignOut}>Sign Out</NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/profile" className="nav-link " id='profil-link'>
-                    Profile
-                  </Link>
-                </NavDropdown.Item>
+                <NavDropdown.Item href="/Profile">Profile</NavDropdown.Item>
               </NavDropdown>
             ) : (
               <NavBootstrap.Item>
                 {isSignOutPage ? null : (
-                  <Link to="/login" className="nav-link">
+                  <NavLink to="/login" className="nav-link-signin" activeClassName="active">
                     Sign In
-                  </Link>
+                  </NavLink>
                 )}
               </NavBootstrap.Item>
             )}

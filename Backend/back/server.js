@@ -11,8 +11,7 @@ const BookingModel = require('../back/models/bookinghistrotymodel');
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '20mb' }));
-
-mongoose.connect("mongodb://localhost:27017/HotelBookingSystem");
+mongoose.connect('mongodb://localhost:27017/HotelBookingSystem', {});
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -22,6 +21,71 @@ app.post('/signup', (req, res) => {
         .then(newUser => res.json(newUser))
         .catch(err => res.json(err));
 });
+
+app.get('/api/signup/:username', async (req, res) => {
+    const { username } = req.params;
+  
+    try {
+      const user = await SignupModel.findOne({ username });
+  
+      if (user) {
+        res.json({
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          username: user.username,
+          password: user.password, // Note: It's not recommended to send the password to the client
+        });
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+  app.put('/api/signup/:username', async (req, res) => {
+    const { username } = req.params;
+    const updatedUserData = req.body;
+  
+    try {
+      const updatedUser = await SignupModel.findOneAndUpdate(
+        { username },
+        { $set: updatedUserData },
+        { new: true }
+      );
+  
+      if (updatedUser) {
+        console.log('User profile updated:', updatedUser);
+        res.json(updatedUser);
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    } catch (error) {
+      console.error('Error updating user profile:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+  app.delete('/api/signup/:username', async (req, res) => {
+    const { username } = req.params;
+  
+    try {
+      const deletedUser = await SignupModel.findOneAndDelete({ username });
+  
+      if (deletedUser) {
+        console.log('User profile deleted:', deletedUser);
+        res.json({ message: 'User profile deleted successfully' });
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    } catch (error) {
+      console.error('Error deleting user profile:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
 
 app.post('/login', (req, res) => {
     const { email, password } = req.body;

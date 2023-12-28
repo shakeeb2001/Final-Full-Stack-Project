@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom'; // Step 1
-import Footer from '../component/footer';
 import RoomBackgroundVideo from '../images/roomtype.mp4';
 import './RoomType.css';
 import img1 from '../images/img1.png';
@@ -57,9 +56,6 @@ export default function RoomTypes() {
             ))}
           </Row>
         </div>
-      </div>
-      <div id="footer-section">
-        <Footer />
       </div>
     </div>
   );

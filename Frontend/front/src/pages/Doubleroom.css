@@ -14,8 +14,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: 20px;
   max-width: 600px;
-  margin-top: 10px;
-  height: 60%;
+
+  height: 70%;
 }
 
 .room-info-container img.additional-image {
@@ -41,8 +41,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 20px; 
   background-color: white;
-  height: 60%;
+  height: 70%;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
+
 .reservation-form-container form 
 {
   margin-bottom: 15px;

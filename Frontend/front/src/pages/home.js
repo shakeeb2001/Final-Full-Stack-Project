@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import './home.css';
-import Footer from '../component/footer';
 import Background from '../images/Hotel.png';
 import EventImageOne from '../images/engagement.png';
 import EventImageTwo from '../images/wedding.png';
@@ -19,16 +18,13 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Simulating login for demonstration purposes
     setIsLoggedIn(true);
   }, []);
 
   const handleLogin = () => {
-    // If the user is logged in, navigate to the 'roomtype' page
     if (isLoggedIn===true) {
       navigate('/roomtype');
     } else {
-      // If the user is not logged in, navigate to the 'login' page
       navigate('/login');
     }
   };
@@ -45,7 +41,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="Container1">
+      <div className="Container1" id='container'>
         <img src={Background} alt="Background" className="background-image-new img-fluid" />
         <div className="contentContainer text-center text-md-left">
           <h1 className="homeTitle">Welcome to Crystal Cascade Hotel</h1>
@@ -53,8 +49,9 @@ export default function Home() {
             <h2 className='h2-new'><i>
               Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
               stands as a beacon of hospitality along the coastline of Colombo.
+              <br></br>
               {isLoggedIn ? (
-                <button className="btn btn-secondary" onClick={handleLogin}>
+                <button className="btn btn-secondary custome" onClick={handleLogin} id='home-booknow'>
                   Book Now
                 </button>
               ) : (
@@ -106,7 +103,6 @@ export default function Home() {
 
         <br></br>
         <div className="row">
-          {/* Add more card components as needed */}
         </div>
       </div>
    
@@ -152,9 +148,6 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="footer-container">
-        <Footer />
-      </div>
     </div>
   );
 }
