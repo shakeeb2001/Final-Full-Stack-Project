@@ -21,6 +21,7 @@ jobs:
         run: |
           cd Backend/back
           npm install
+          npm audit fix --force
         env:
           CI: true
 
@@ -45,8 +46,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-    - name: Deploy to Vercel (Frontend)
-      run: npx vercel --prod -t ${{secrets.VERCEL_TOKEN}} -m githubCommitSha=32e6cd17bd2a09b0bb7fa748be1be7c8bee260bb -m githubCommitAuthorName=shakeeb2001 -m githubCommitAuthorLogin=shakeeb2001 -m githubDeployment=1 -m githubOrg=shakeeb2001 -m githubRepo=Final-Full-Stack-Project -m githubCommitOrg=shakeeb2001 -m githubCommitRepo=Final-Full-Stack-Project -m githubCommitMessage="Update cicd.yml" -m githubCommitRef=main
-      env:
-        VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
-        working-directory: front
+      - name: Install npx if not already installed
+        run: command -v npx || npm install -g npx
+
+      - name: Deploy to Vercel (Frontend)
+        run: npx vercel --prod -t ${{secrets.VERCEL_TOKEN}} -m githubCommitSha=32e6cd17bd2a09b0bb7fa748be1be7c8bee260bb -m githubCommitAuthorName=shakeeb2001 -m githubCommitAuthorLogin=shakeeb2001 -m githubDeployment=1 -m githubOrg=shakeeb2001 -m githubRepo=Final-Full-Stack-Project -m githubCommitOrg=shakeeb2001 -m githubCommitRepo=Final-Full-Stack-Project -m githubCommitMessage="Update cicd.yml" -m githubCommitRef=main
+        env:
+          VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
+          working-directory: front
