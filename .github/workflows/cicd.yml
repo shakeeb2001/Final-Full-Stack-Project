@@ -19,9 +19,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd back/ # Replace with your actual backend folder
+          cd Backend/back 
           npm install
-          cd ../Frontend/front/ # Replace with your actual frontend folder
+          cd ../Frontend/front 
           npm install
         env:
           CI: true
