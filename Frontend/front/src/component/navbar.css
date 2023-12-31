@@ -18,7 +18,7 @@
 
 .nav-links {
   display: flex;
-  text-align: center;
+  margin-left: 200px;
 }
 
 .nav-link {
@@ -29,6 +29,7 @@
   text-align: center;
   transition: color 0.3s;
 }
+
 
 .nav-link:hover {
   color: #ffffff !important;
@@ -72,5 +73,5 @@
 }
 
 .profile-dropdown{
-  margin-left: 500px;
+  left: 200px;
 }

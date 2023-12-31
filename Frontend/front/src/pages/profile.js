@@ -145,11 +145,11 @@ const Profile = ({ user, onUpdateProfile ,onDeleteProfile}) => {
         <Col className="text-right">
           <div className="d-flex align-items-center">
             {isFormEdited && (
-              <Button variant="primary" className="mr-2" onClick={handleSaveProfile}>
+              <Button variant="primary" className="mr-3" onClick={handleSaveProfile}>
                 Save
               </Button>
             )}
-             <Button variant="danger" className="mr-2" onClick={handleDeleteProfile}>
+             <Button className="mr-4" onClick={handleDeleteProfile}>
               Delete Profile
             </Button>
           </div>
