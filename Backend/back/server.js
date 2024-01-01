@@ -12,8 +12,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json({ limit: '20mb' }));
-const uri = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/test?retryWrites=true&w=majority';
-mongoose.connect(uri);
+const MONGODB_URI = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/test?retryWrites=true&w=majority';
+mongoose.connect(MONGODB_URI);
 
 const connection = mongoose.connection;
 const storage = multer.memoryStorage();
