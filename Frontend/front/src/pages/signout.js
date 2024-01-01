@@ -3,7 +3,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './signout.css';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import loginIcon from '../images/newlogo.png';
 import Background from '../images/background.png';
@@ -30,12 +30,12 @@ export default function Signout({ updateLoginStatus, setIsAdmin }) {
       <Form className='overlay-form-one'>
         <img src={loginIcon} alt="Login Icon" className="login-icon" />
         <h3>Do You want To Signout......</h3>
-        <Button type='button' className='btn' onClick={handleSignout}>
+        <button type='button' className='btn btn-primary' onClick={handleSignout}>
           Yes
-        </Button>
-        <Button type='button' className='btn' onClick={handleCancel}>
+        </button>
+        <button type='button' className='btn btn-primary' onClick={handleCancel}>
           Cancel
-        </Button>
+        </button>
       </Form>
     </div>
   );
