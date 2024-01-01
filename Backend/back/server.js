@@ -280,7 +280,7 @@ app.delete('/reservations/:reservationId', async (req, res) => {
         const deletedReservation = await BookingModel.findByIdAndDelete(reservationId);
         if (deletedReservation) {
             console.log('Reservation deleted successfully');
-            res.json({ message: 'Reservation deleted successfully' });
+            res.json({ message: 'deleted successfully' });
         } else {
             res.status(404).json({ error: 'Reservation not found' });
         }
