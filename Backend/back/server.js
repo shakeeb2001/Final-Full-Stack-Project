@@ -11,8 +11,10 @@ const BookingModel = require('../back/models/bookinghistrotymodel');
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '20mb' }));
-mongoose.connect('mongodb://localhost:27017/HotelBookingSystem', {});
+const uri = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+const connection = mongoose.connection;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
