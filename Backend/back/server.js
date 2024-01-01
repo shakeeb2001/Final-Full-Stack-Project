@@ -28,7 +28,7 @@ const connection = mongoose.connection;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.get("/hellow" , (req,res)=>{
+app.get("hellow" , (req,res)=>{
     res.json("hellow");
 })
 
@@ -103,7 +103,7 @@ app.get('/signup/:username', async (req, res) => {
   });
   
 
-app.post('/login', (req, res) => {
+app.post('login', (req, res) => {
     const { email, password } = req.body;
     SignupModel.findOne(req.body)
         .then(user => {
