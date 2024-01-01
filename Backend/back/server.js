@@ -10,14 +10,15 @@ const BookingModel = require('../back/models/bookinghistrotymodel');
 
 const app = express();
 
-const corsOptions = {
+const corsOptions = 
+{
     origin: 'https://final-full-stack-project-frontend.vercel.app',
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true,
     optionsSuccessStatus: 204,
   };
   
-  app.use(cors(corsOptions));
+app.use(cors(corsOptions));
   
 app.use(express.json({ limit: '20mb' }));
 const uri = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/test?retryWrites=true&w=majority';
