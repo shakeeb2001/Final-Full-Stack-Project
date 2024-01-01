@@ -12,7 +12,7 @@ const app = express();
 app.use(cors(
 
     {
-     origin: [ "https://final-full-stack-project-api.vercel.app/" ],
+     origin: [ "https://final-full-stack-project-frontend.vercel.app" ],
      methods: ["POST","GET","PUT","DELETE"],
      credentials: true
     }
