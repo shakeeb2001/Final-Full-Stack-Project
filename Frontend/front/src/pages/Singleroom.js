@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { Form, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Doubleroom.css';
@@ -225,9 +225,9 @@ export default function DoubleRoom({ isLoggedIn }) {
               </>
             ) : null}
 
-            <Button variant="dark" type="submit">
+            <button>
               Reserve
-            </Button>
+            </button>
           </Form>
         ) : (
           <p className="login-message">
@@ -252,12 +252,12 @@ export default function DoubleRoom({ isLoggedIn }) {
         <Modal.Footer>
           {reservationStatus === null ? (
             <>
-              <Button variant="secondary" onClick={handleCloseModal}>
+              <button onClick={handleCloseModal}>
                 No
-              </Button>
-              <Button variant="primary" onClick={handleModalYes}>
+              </button>
+              <button onClick={handleModalYes}>
                 Yes
-              </Button>
+              </button>
             </>
           ) : null}
         </Modal.Footer>
