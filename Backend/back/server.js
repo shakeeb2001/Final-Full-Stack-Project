@@ -32,7 +32,7 @@ app.post('/signup', (req, res) => {
         .catch(err => res.json(err));
 });
 
-app.get('/api/signup/:username', async (req, res) => {
+app.get('/signup/:username', async (req, res) => {
     const { username } = req.params;
   
     try {
@@ -55,7 +55,7 @@ app.get('/api/signup/:username', async (req, res) => {
     }
   });
   
-  app.put('/api/signup/:username', async (req, res) => {
+  app.put('/signup/:username', async (req, res) => {
     const { username } = req.params;
     const updatedUserData = req.body;
   
@@ -78,7 +78,7 @@ app.get('/api/signup/:username', async (req, res) => {
     }
   });
   
-  app.delete('/api/signup/:username', async (req, res) => {
+  app.delete('/signup/:username', async (req, res) => {
     const { username } = req.params;
   
     try {
@@ -114,7 +114,7 @@ app.post('/login', (req, res) => {
         .catch(err => res.json(err));
 });
 
-app.post('/api/events', upload.single('image'), (req, res) => {
+app.post('/events', upload.single('image'), (req, res) => {
     EventModel.create({
         title: req.body.title,
         description: req.body.description,
@@ -130,7 +130,7 @@ app.post('/api/events', upload.single('image'), (req, res) => {
         });
 });
 
-app.post('/api/dinings', upload.single('image'), (req, res) => {
+app.post('/dinings', upload.single('image'), (req, res) => {
     DiningModel.create({
         title: req.body.title,
         description: req.body.description,
@@ -146,7 +146,7 @@ app.post('/api/dinings', upload.single('image'), (req, res) => {
         });
 });
 
-app.get('/api/events', async (req, res) => {
+app.get('/events', async (req, res) => {
     try {
       const existingCards = await EventModel.find();
       res.json(existingCards);
@@ -155,7 +155,7 @@ app.get('/api/events', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-app.get('/api/dinings', async (req, res) => {
+app.get('/dinings', async (req, res) => {
     try {
       const existingCards = await DiningModel.find();
       res.json(existingCards);
@@ -166,7 +166,7 @@ app.get('/api/dinings', async (req, res) => {
 });
 
 
-app.delete('/api/events/:eventId', async (req, res) => {
+app.delete('/events/:eventId', async (req, res) => {
     const { eventId } = req.params;
     
     try {
@@ -182,7 +182,7 @@ app.delete('/api/events/:eventId', async (req, res) => {
     }
 });
 
-app.delete('/api/dinings/:diningId', async (req, res) => {
+app.delete('/dinings/:diningId', async (req, res) => {
     const { diningId } = req.params;
     
     try {
@@ -198,7 +198,7 @@ app.delete('/api/dinings/:diningId', async (req, res) => {
     }
 });
 
-app.post('/api/reservations', (req, res) => {
+app.post('/reservations', (req, res) => {
     const {
         name,
         idNumber,
@@ -226,7 +226,7 @@ app.post('/api/reservations', (req, res) => {
     });
 });
 
-app.get('/api/reservations', async (req, res) => {
+app.get('/reservations', async (req, res) => {
     try {
       const existingReservations = await BookingModel.find();
       res.json(existingReservations);
@@ -238,7 +238,7 @@ app.get('/api/reservations', async (req, res) => {
   
 
 // Update reservation by ID
-app.put('/api/reservations/:reservationId', async (req, res) => {
+app.put('/reservations/:reservationId', async (req, res) => {
     const { reservationId } = req.params;
     const {
         name,
@@ -276,7 +276,7 @@ app.put('/api/reservations/:reservationId', async (req, res) => {
 });
 
 // Delete reservation by ID
-app.delete('/api/reservations/:reservationId', async (req, res) => {
+app.delete('/reservations/:reservationId', async (req, res) => {
     const { reservationId } = req.params;
 
     try {
@@ -294,7 +294,7 @@ app.delete('/api/reservations/:reservationId', async (req, res) => {
 });
 
 // Find booking by ID number
-app.get('/api/reservations/:idNumber', async (req, res) => {
+app.get('/reservations/:idNumber', async (req, res) => {
     const { idNumber } = req.params;
 
     try {
