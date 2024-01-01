@@ -294,7 +294,7 @@ app.delete('/reservations/:reservationId', async (req, res) => {
 });
 
 // Find booking by ID number
-app.get('/api/reservations/:idNumber', async (req, res) => {
+app.get('/reservations/:idNumber', async (req, res) => {
     const { idNumber } = req.params;
 
     try {
