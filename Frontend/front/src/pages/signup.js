@@ -69,7 +69,7 @@ export default function Signup() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <button className='btn mx-auto d-block'>Sign Up</button>
+        <button>Sign Up</button>
       </Form>
     </div>
   );
