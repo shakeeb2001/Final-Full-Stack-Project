@@ -12,7 +12,7 @@ const app = express();
 
 const corsOptions = 
 {
-    origin: 'https://final-full-stack-project-frontend.vercel.app',
+    origin: ['https://final-full-stack-project-frontend.vercel.app'],
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true,
     optionsSuccessStatus: 204,
