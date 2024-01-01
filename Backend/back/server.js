@@ -9,7 +9,15 @@ const DiningModel = require('../back/models/diningcardmodel');
 const BookingModel = require('../back/models/bookinghistrotymodel');
 
 const app = express();
-app.use(cors());
+app.use(cors(
+
+    {
+     origin: [ "https://final-full-stack-project-api.vercel.app/" ],
+     methods: ["POST","GET"],
+     credentials: true
+    }
+    
+));
 app.use(express.json({ limit: '20mb' }));
 const uri = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
