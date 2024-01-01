@@ -13,10 +13,10 @@ app.use(cors(
 
     {
      origin: [ "https://final-full-stack-project-api.vercel.app/" ],
-     methods: ["POST","GET"],
+     methods: ["POST","GET","PUT","DELETE"],
      credentials: true
     }
-    
+
 ));
 app.use(express.json({ limit: '20mb' }));
 const uri = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/?retryWrites=true&w=majority';
