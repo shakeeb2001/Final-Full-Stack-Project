@@ -1,5 +1,18 @@
 {
   "version": 2,
-  "builds": [{ "src": "server.js", "use": "@vercel/node" }],
-  "routes": [{ "handle": "vercel" }]
+  "builds": [
+    {
+      "src": "backend/back/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/backend/back/server.js"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/test?retryWrites=true&w=majority" 
+  }
 }
