@@ -9,8 +9,8 @@ const DiningModel = require('../back/models/diningcardmodel');
 const BookingModel = require('../back/models/bookinghistrotymodel');
 
 const app = express(); 
+
 app.use(cors());
-  
 app.use(express.json({ limit: '20mb' }));
 const uri = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(uri);
