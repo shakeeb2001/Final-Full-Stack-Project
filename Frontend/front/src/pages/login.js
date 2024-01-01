@@ -75,7 +75,7 @@ export default function Login({ updateLoginStatus }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <button className='btn mx-auto d-block'>Login</button>
+        <button className=''>Login</button>
         <p className="signup-link">
           Don't have an account? <Link className="signup-link-route" to="/signup">Sign Up</Link>
         </p>
