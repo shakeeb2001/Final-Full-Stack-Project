@@ -28,6 +28,10 @@ const connection = mongoose.connection;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+app.get("/hellow" , (req,res)=>{
+    res.json("hellow");
+})
+
 app.post('/signup', (req, res) => {
     SignupModel.create(req.body)
         .then(newUser => res.json(newUser))
