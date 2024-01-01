@@ -18,7 +18,7 @@ export default function Login({ updateLoginStatus }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('https://final-full-stack-project-api.vercel.app/login', { username, password })
+    axios.post('https://final-full-stack-project-backend.vercel.app/login', { username, password })
       .then(result => {
         console.log(result);
 
