@@ -18,7 +18,7 @@ const Profile = ({ user, onUpdateProfile ,onDeleteProfile}) => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`ttps://final-full-stack-project-api.vercel.app/signup/${user}`)
+      axios.get(`https://final-full-stack-project-backend.vercel.app/signup/${user}`)
         .then(response => {
           const userDataFromServer = response.data;
           setUserData(userDataFromServer);
@@ -36,7 +36,7 @@ const Profile = ({ user, onUpdateProfile ,onDeleteProfile}) => {
   };
 
   const handleSaveProfile = () => {
-    axios.put(`ttps://final-full-stack-project-api.vercel.app/signup/${user}`, userData)
+    axios.put(`https://final-full-stack-project-backend.vercel.app/signup/${user}`, userData)
       .then(response => {
         console.log('Profile updated successfully:', response.data);
         onUpdateProfile(response.data);  // Update with the data received from the server
@@ -48,7 +48,7 @@ const Profile = ({ user, onUpdateProfile ,onDeleteProfile}) => {
   };
 
   const handleDeleteProfile = () => {
-    axios.delete(`ttps://final-full-stack-project-api.vercel.app/signup/${user}`)
+    axios.delete(`https://final-full-stack-project-backend.vercel.app/signup/${user}`)
       .then(response => {
         console.log('Profile deleted successfully:', response.data);
         onDeleteProfile(); // Notify parent component about deletion

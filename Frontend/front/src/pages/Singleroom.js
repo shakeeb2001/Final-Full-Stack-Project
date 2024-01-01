@@ -63,7 +63,7 @@ export default function DoubleRoom({ isLoggedIn }) {
     console.log('Form Data:', formData);
 
     try {
-      const response = await axios.post('ttps://final-full-stack-project-api.vercel.app/reservations', formData);
+      const response = await axios.post('https://final-full-stack-project-backend.vercel.app/reservations', formData);
       if (response.data.success) {
         setReservationStatus('success');
 

@@ -44,7 +44,7 @@ const Event = ({ isAdmin }) => {
         formData.append('image', dataURItoBlob(newCard.image));
       }
 
-      const response = await fetch('ttps://final-full-stack-project-api.vercel.app/events', {
+      const response = await fetch('https://final-full-stack-project-backend.vercel.app/events', {
         method: 'POST',
         body: formData,
       });
@@ -76,7 +76,7 @@ const Event = ({ isAdmin }) => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/events');
+        const response = await fetch('https://final-full-stack-project-backend.vercel.app/events');
         if (response.ok) {
           const existingCards = await response.json();
           setCards(existingCards);
@@ -94,7 +94,7 @@ const Event = ({ isAdmin }) => {
 
   const handleDeleteCard = async (cardId) => {
     try {
-      const response = await fetch(`ttps://final-full-stack-project-api.vercel.app/events/${cardId}`, {
+      const response = await fetch(`https://final-full-stack-project-backend.vercel.app/events/${cardId}`, {
         method: 'DELETE',
       });
 

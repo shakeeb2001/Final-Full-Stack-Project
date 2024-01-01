@@ -21,7 +21,7 @@ export default function BookingHistory() {
   useEffect(() => {
     const fetchBookingHistory = async () => {
       try {
-        const response = await fetch('ttps://final-full-stack-project-api.vercel.app/reservations');
+        const response = await fetch('https://final-full-stack-project-backend.vercel.app/reservations');
         if (response.ok) {
           const data = await response.json();
           console.log('Fetched data:', data);
@@ -39,7 +39,7 @@ export default function BookingHistory() {
 
   const handleDelete = async (reservationId) => {
     try {
-      const response = await fetch(`ttps://final-full-stack-project-api.vercel.app/reservations/${reservationId}`, {
+      const response = await fetch(`https://final-full-stack-project-backend.vercel.app/reservations/${reservationId}`, {
         method: 'DELETE',
       });
 
@@ -73,7 +73,7 @@ export default function BookingHistory() {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`ttps://final-full-stack-project-api.vercel.app/reservations/${editId}`, {
+      const response = await fetch(`https://final-full-stack-project-backend.vercel.app/reservations/${editId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export default function BookingHistory() {
 
   const handleFindById = async () => {
     try {
-      const response = await fetch(`ttps://final-full-stack-project-api.vercel.app/reservations/${searchId}`);
+      const response = await fetch(`https://final-full-stack-project-backend.vercel.app/reservations/${searchId}`);
       if (response.ok) {
         const data = await response.json();
         if (data.length > 0) {
