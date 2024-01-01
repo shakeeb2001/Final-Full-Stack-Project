@@ -9,17 +9,13 @@ const DiningModel = require('../back/models/diningcardmodel');
 const BookingModel = require('../back/models/bookinghistrotymodel');
 
 const app = express();
-app.use(cors(
-
-    {
-     origin: [ "https://final-full-stack-project-frontend.vercel.app" ],
-     methods: ["POST","GET","PUT","DELETE"],
-     credentials: true
-    }
-
-));
+app.use(cors({
+    origin: ['https://final-full-stack-project-frontend.vercel.app'],
+    methods: ['POST', 'GET', 'PUT', 'DELETE'],
+    credentials: true,
+  }));
 app.use(express.json({ limit: '20mb' }));
-const uri = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
