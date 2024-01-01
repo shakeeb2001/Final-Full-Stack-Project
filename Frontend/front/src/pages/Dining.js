@@ -44,7 +44,7 @@ const Dining = ({ isAdmin }) => {
         formData.append('image', dataURItoBlob(newCard.image));
       }
 
-      const response = await fetch('http://localhost:3001/api/dinings', {
+      const response = await fetch('ttps://final-full-stack-project-api.vercel.app/dinings', {
         method: 'POST',
         body: formData,
       });
@@ -76,7 +76,7 @@ const Dining = ({ isAdmin }) => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/dinings');
+        const response = await fetch('ttps://final-full-stack-project-api.vercel.app/dinings');
         if (response.ok) {
           const existingCards = await response.json();
           setCards(existingCards);
@@ -110,7 +110,7 @@ useEffect(() => {
 
   const handleDeleteCard = async (cardId) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/dinings/${cardId}`, {
+      const response = await fetch(`ttps://final-full-stack-project-api.vercel.app/dinings/${cardId}`, {
         method: 'DELETE',
       });
 

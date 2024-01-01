@@ -44,7 +44,7 @@ const Event = ({ isAdmin }) => {
         formData.append('image', dataURItoBlob(newCard.image));
       }
 
-      const response = await fetch('http://localhost:3001/api/events', {
+      const response = await fetch('ttps://final-full-stack-project-api.vercel.app/events', {
         method: 'POST',
         body: formData,
       });
@@ -94,7 +94,7 @@ const Event = ({ isAdmin }) => {
 
   const handleDeleteCard = async (cardId) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/events/${cardId}`, {
+      const response = await fetch(`ttps://final-full-stack-project-api.vercel.app/events/${cardId}`, {
         method: 'DELETE',
       });
 
