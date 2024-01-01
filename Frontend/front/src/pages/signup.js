@@ -16,9 +16,10 @@ export default function Signup() {
     e.preventDefault();
     const userData = { firstName, lastName, email, username, password };
 
-    axios.post('http://localhost:3001/signup', userData)
+    axios.post('https://final-full-stack-project-backend.vercel.app/signup', userData)
       .then(result => {
         console.log(result);
+        alert('Sign up successfully...');
         // You may want to redirect to the login page or handle the response in some way
       })
       .catch(err => {
