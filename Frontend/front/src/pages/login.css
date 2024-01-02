@@ -62,14 +62,14 @@ h2 {
     padding-right: 100px;
 }
 
-#login-container .button-container {
+.button-container.login-div {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.button {
+.button.login {
     border: none;
     border-radius: 3px;
     color: rgb(4, 77, 97);
@@ -78,7 +78,7 @@ h2 {
     transition: transform 0.3s ease-in-out;
 }
 
-.button:hover {
+.button.login:hover {
     border: none;
     border-radius: 3px;
     color: rgb(255, 255, 255);

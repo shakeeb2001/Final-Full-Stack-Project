@@ -77,8 +77,8 @@ export default function Login({ updateLoginStatus }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <div className="button-container">
-          <button className='button'>Login</button>
+        <div className="button-container login-div">
+          <button className='button login'>Login</button>
         </div>
         <p className="signup-link">
           Don't have an account? <Link className="signup-link-route" to="/signup">Sign Up</Link>
