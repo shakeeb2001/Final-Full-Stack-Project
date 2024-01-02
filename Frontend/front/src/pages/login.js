@@ -83,8 +83,6 @@ export default function Login({ updateLoginStatus }) {
         </p>
       </Form>
       <div>
-
-      </div>
       {showSuccessAlert && (
           <Alert variant="success" onClose={() => setShowSuccessAlert(false)} dismissible>
             Login successful!
@@ -103,6 +101,9 @@ export default function Login({ updateLoginStatus }) {
             </Alert>
           </Modal.Body>
         </Modal>
+
+      </div>
+      
     </div>
   );
 }
