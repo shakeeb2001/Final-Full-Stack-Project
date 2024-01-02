@@ -225,9 +225,9 @@ export default function DoubleRoom({ isLoggedIn }) {
               </>
             ) : null}
 
-            <button>
-              Reserve
-            </button>
+           <div className="button-container">
+                <button className='button-reserve'>Reserve</button>
+           </div> 
           </Form>
         ) : (
           <p className="login-message">
@@ -252,12 +252,10 @@ export default function DoubleRoom({ isLoggedIn }) {
         <Modal.Footer>
           {reservationStatus === null ? (
             <>
-              <button onClick={handleCloseModal}>
-                No
-              </button>
-              <button onClick={handleModalYes}>
-                Yes
-              </button>
+          <div className="button-container">
+           <button className='button' onClick={handleModalYes}>Yes</button>
+           <button className='button' onClick={handleCloseModal}>No</button>
+          </div> 
             </>
           ) : null}
         </Modal.Footer>
