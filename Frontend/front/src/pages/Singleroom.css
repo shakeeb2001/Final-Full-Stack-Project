@@ -108,7 +108,7 @@
   border-radius: 5px;
   color: rgb(4, 77, 97);
   height: 30px;
-  width: 160px;
+  width: 150px;
   margin: 5px;
   transition: transform 0.3s ease-in-out;
 }
@@ -118,5 +118,5 @@
   border-radius: 3px;
   color: rgb(255, 255, 255);
   background-color: rgb(4, 77, 97);
-  transform: scale(1.05);
+  transform: scale(0.95);
 }
