@@ -27,7 +27,7 @@ body {
     color: rgb(255, 255, 255);
     position: absolute;
     top: 50%;
-    left: 50%; /* Center the form horizontally */
+    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
 }
@@ -59,6 +59,7 @@ h2 {
     width: 130%; /* Adjust the size as needed */
     height: auto;
     margin-bottom: 20px;
+    padding-right: 100px;
 }
 
 #login-container .button-container {
@@ -85,15 +86,16 @@ h2 {
     transform: scale(1.05);
 }
 
-.signup-link {
+
+.signup-link{
     text-align: center;
 }
-
-.signup-link-route {
+.signup-link-route{
     color: #bbbbbb;
     text-decoration: none;
 }
-
-.signup-link-route:hover {
+.signup-link-route:hover{
     color: #ffffff;
+
 }
+
