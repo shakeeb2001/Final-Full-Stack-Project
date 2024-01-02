@@ -226,7 +226,7 @@ export default function DoubleRoom({ isLoggedIn }) {
             ) : null}
 
            <div className="button-container">
-                <button className='button-reserve'>Reserve</button>
+                <button className='button reserve'>Reserve</button>
            </div> 
           </Form>
         ) : (

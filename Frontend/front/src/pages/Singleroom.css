@@ -103,7 +103,7 @@
   transform: scale(1.05);
 }
 
-.button-reserver {
+.button.reserver {
   border: none;
   border-radius: 5px;
   color: rgb(4, 77, 97);
@@ -113,7 +113,7 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.button-reserve:hover {
+.button.reserve:hover {
   border: none;
   border-radius: 3px;
   color: rgb(255, 255, 255);
