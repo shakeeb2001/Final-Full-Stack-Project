@@ -81,27 +81,6 @@ export default function Login({ updateLoginStatus }) {
         <p className="signup-link">
           Don't have an account? <Link className="signup-link-route" to="/signup">Sign Up</Link>
         </p>
-        <div>
-      {showSuccessAlert && (
-          <Alert variant="success" onClose={() => setShowSuccessAlert(false)} dismissible>
-            Login successful!
-          </Alert>
-        )}
-
-        {loginError && (
-          <Alert variant="danger" onClose={() => setLoginError(null)} dismissible>
-            {loginError}
-          </Alert>
-        )}
-           <Modal show={showSuccessModal} backdrop="static" keyboard={false} centered>
-          <Modal.Body>
-            <Alert variant="success">
-              <Spinner animation="border" size="sm" /> Logging in...
-            </Alert>
-          </Modal.Body>
-        </Modal>
-
-      </div>
       </Form>
       
     </div>
