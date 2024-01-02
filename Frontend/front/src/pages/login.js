@@ -81,8 +81,7 @@ export default function Login({ updateLoginStatus }) {
         <p className="signup-link">
           Don't have an account? <Link className="signup-link-route" to="/signup">Sign Up</Link>
         </p>
-      </Form>
-      <div>
+        <div>
       {showSuccessAlert && (
           <Alert variant="success" onClose={() => setShowSuccessAlert(false)} dismissible>
             Login successful!
@@ -103,6 +102,7 @@ export default function Login({ updateLoginStatus }) {
         </Modal>
 
       </div>
+      </Form>
       
     </div>
   );
