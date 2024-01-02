@@ -62,15 +62,20 @@ h2 {
     padding-right: 100px;
 }
 
+#login-container .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 
 .button {
     border: none;
     border-radius: 3px;
     color: rgb(4, 77, 97);
-    margin-left: 90px;
     height: 30px;
     width: 150px;
-    transition: transform 0.3s ease-in-out; 
+    transition: transform 0.3s ease-in-out;
 }
 
 .button:hover {
@@ -78,8 +83,9 @@ h2 {
     border-radius: 3px;
     color: rgb(255, 255, 255);
     background-color: rgb(4, 77, 97);
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
+
 
 .signup-link{
     text-align: center;
