@@ -36,14 +36,14 @@ h1 {
 
 
 
-.button-container.bookig-div3 {
+.button-container.booking-div3 {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.button.bookig-search {
+.button.booking-search {
     border: none;
     border-radius: 3px;
     color: rgb(4, 77, 97);
@@ -52,7 +52,7 @@ h1 {
     transition: transform 0.3s ease-in-out;
 }
 
-.button.bookig-search:hover {
+.button.booking-search:hover {
     border: none;
     border-radius: 3px;
     color: rgb(255, 255, 255);

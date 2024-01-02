@@ -152,7 +152,7 @@ export default function BookingHistory() {
           value={searchId}
           onChange={handleSearchInputChange}
         />
-            <div className="button-container bookig-div3">
+            <div className="button-container booking-div3">
               <button className='button booking-search' onClick={handleFindById}>Search</button>
            </div>
       </div>
@@ -254,7 +254,7 @@ export default function BookingHistory() {
                   </>
                 ) : (
                   <>
-                  <div className="button-container bookig-div1">
+                  <div className="button-container booking-div1">
                     <button className='button booking-delete' onClick={() => handleDelete(reservation._id)}>Delete</button>
                     <button className='button booking-edit'onClick={() => handleEdit(reservation._id)}>Edit</button>
                  </div>
