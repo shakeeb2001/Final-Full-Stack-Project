@@ -81,14 +81,6 @@ export default function Login({ updateLoginStatus }) {
         <p className="signup-link">
           Don't have an account? <Link className="signup-link-route" to="/signup">Sign Up</Link>
         </p>
-      
-        <Modal show={showSuccessModal} backdrop="static" keyboard={false} centered>
-          <Modal.Body>
-            <Alert variant="success">
-              <Spinner animation="border" size="sm" /> Logging in...
-            </Alert>
-          </Modal.Body>
-        </Modal>
       </Form>
     </div>
   );
