@@ -89,11 +89,7 @@ export default function Login({ updateLoginStatus }) {
             </Alert>
           </Modal.Body>
         </Modal>
-
       </Form>
-     
-
-
     </div>
   );
 }
