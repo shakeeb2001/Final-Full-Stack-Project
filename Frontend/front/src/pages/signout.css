@@ -65,14 +65,14 @@ h3{
 }
 
 
- .button-container {
+ .button-container.signout-div{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.button {
+.button.signout {
     border: none;
     border-radius: 5px;
     color: rgb(4, 77, 97);
@@ -82,7 +82,7 @@ h3{
     transition: transform 0.3s ease-in-out;
 }
 
-.button:hover {
+.button.signout:hover {
     border: none;
     border-radius: 3px;
     color: rgb(255, 255, 255);
