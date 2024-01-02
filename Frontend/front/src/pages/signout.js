@@ -29,13 +29,14 @@ export default function Signout({ updateLoginStatus, setIsAdmin }) {
       <Form className='overlay-form-one'>
         <img src={loginIcon} alt="Login Icon" className="login-icon" />
         <h3>Do You want To Signout......</h3>
-        <button  onClick={handleSignout}>
-          Yes
-        </button>
-        <button onClick={handleCancel}>
-          Cancel
-        </button>
+        <div className="button-container">
+           <button className='button' onClick={handleSignout}>Yes</button>
+        </div> 
+        <div className="button-container">
+          <button className='button' onClick={handleCancel}>Cancel</button>
+       </div>
       </Form>
     </div>
   );
 }
+
