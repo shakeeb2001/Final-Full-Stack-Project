@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button,  } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import './BookingHistory.css';
 
 export default function BookingHistory() {
@@ -15,7 +15,6 @@ export default function BookingHistory() {
     checkIn: '',
     checkOut: '',
   });
-
   const [showNotFoundModal, setShowNotFoundModal] = useState(false);
 
   useEffect(() => {
@@ -152,9 +151,9 @@ export default function BookingHistory() {
           value={searchId}
           onChange={handleSearchInputChange}
         />
-            <div className="button-container booking-div3">
-              <button className='button booking-search' onClick={handleFindById}>Search</button>
-           </div>
+        <div className="button-container booking-div3">
+          <button className='button booking-search' onClick={handleFindById}>Search</button>
+        </div>
       </div>
       <br />
       <table className="table table-hover">
@@ -249,15 +248,15 @@ export default function BookingHistory() {
                   <>
                     <div className="button-container bookig-div2">
                       <button className='button booking-save' onClick={handleSave}>Save</button>
-                      <button className='button booking-cancel'onClick={handleCancelEdit}>Cancel</button>
+                      <button className='button booking-cancel' onClick={handleCancelEdit}>Cancel</button>
                     </div>
                   </>
                 ) : (
                   <>
-                  <div className="button-container booking-div1">
-                    <button className='button booking-delete' onClick={() => handleDelete(reservation._id)}>Delete</button>
-                    <button className='button booking-edit'onClick={() => handleEdit(reservation._id)}>Edit</button>
-                 </div>
+                    <div className="button-container booking-div1">
+                      <button className='button booking-delete' onClick={() => handleDelete(reservation._id)}>Delete</button>
+                      <button className='button booking-edit' onClick={() => handleEdit(reservation._id)}>Edit</button>
+                    </div>
                   </>
                 )}
               </td>
@@ -283,8 +282,3 @@ export default function BookingHistory() {
     </div>
   );
 }
-
-
-<div className="button-container bookig-search">
-  <button className='button booking-search' onClick={handleFindById}>Search</button>
-</div>
