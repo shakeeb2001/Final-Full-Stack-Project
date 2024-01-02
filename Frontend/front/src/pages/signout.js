@@ -31,10 +31,8 @@ export default function Signout({ updateLoginStatus, setIsAdmin }) {
         <h3>Do You want To Signout......</h3>
         <div className="button-container">
            <button className='button' onClick={handleSignout}>Yes</button>
+           <button className='button' onClick={handleCancel}>Cancel</button>
         </div> 
-        <div className="button-container">
-          <button className='button' onClick={handleCancel}>Cancel</button>
-       </div>
       </Form>
     </div>
   );
