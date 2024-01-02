@@ -63,18 +63,22 @@ h2 {
 }
 
 
-.button{
+.button {
     border: none;
     border-radius: 3px;
     color: rgb(4, 77, 97);
-    margin-left: 75px;
-
+    margin-left: 100px;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition for the transform property */
 }
-.button:hover{
+
+.button:hover {
     border: none;
     border-radius: 3px;
     color: rgb(255, 255, 255);
     background-color: rgb(4, 77, 97);
+    transform: scale(1.05); /* Scale the button slightly on hover */
 }
 
 .signup-link{
