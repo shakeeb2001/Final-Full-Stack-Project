@@ -152,13 +152,9 @@ export default function BookingHistory() {
           value={searchId}
           onChange={handleSearchInputChange}
         />
-        <button
-          className="btn btn-secondary-search"
-          type="button"
-          onClick={handleFindById}
-        >
-          Search
-        </button>
+            <div className="button-container bookig-search">
+              <button className='button booking-search' onClick={handleFindById}>Search</button>
+           </div>
       </div>
       <br />
       <table className="table table-hover">
@@ -251,21 +247,17 @@ export default function BookingHistory() {
               <td>
                 {editId === reservation._id ? (
                   <>
-                    <button className='btn btn-success' onClick={handleSave}>
-                      Save
-                    </button>
-                    <button className='btn btn-danger' onClick={handleCancelEdit}>
-                      Cancel
-                    </button>
+                    <div className="button-container bookig-div2">
+                      <button className='button booking-save' onClick={handleSave}>Save</button>
+                      <button className='button booking-cancel'onClick={handleCancelEdit}>Cancel</button>
+                    </div>
                   </>
                 ) : (
                   <>
-                    <button className='btn btn-secondary1' id='booking-delete' onClick={() => handleDelete(reservation._id)}>
-                      Delete
-                    </button>
-                    <button className='btn btn-secondary2' id='booking-edit' onClick={() => handleEdit(reservation._id)}>
-                      Edit
-                    </button>
+                  <div className="button-container bookig-div1">
+                    <button className='button booking-delete' onClick={() => handleDelete(reservation._id)}>Delete</button>
+                    <button className='button booking-edit'onClick={() => handleEdit(reservation._id)}>Edit</button>
+                 </div>
                   </>
                 )}
               </td>
@@ -291,3 +283,8 @@ export default function BookingHistory() {
     </div>
   );
 }
+
+
+<div className="button-container bookig-search">
+  <button className='button booking-search' onClick={handleFindById}>Search</button>
+</div>

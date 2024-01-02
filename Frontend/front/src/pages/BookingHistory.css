@@ -29,24 +29,121 @@ h1 {
 
 
 
-  
-.btn{
-    background-color: rgb(174, 174, 174);
-    width: 100px;
-    margin: 3px;
-    align-items: center;
-    font-size: small;
-}
-.btn-secondary1:hover{
-    background-color: rgb(240, 77, 23);
-}
-.btn-secondary2:hover{
-    background-color: rgb(206, 230, 28);
-}
-
 .table-group-divider{
     text-align: center;
 }
 .btn-secondary-search:hover{
     background-color: rgb(72, 206, 108);
 }
+
+
+
+.button-container.bookig-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.button.bookig-search {
+    border: none;
+    border-radius: 3px;
+    color: rgb(4, 77, 97);
+    height: 30px;
+    width: 75px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button.bookig-search:hover {
+    border: none;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(4, 77, 97);
+}
+
+
+.button-container.bookig-div2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.button.booking-save {
+    border: none;
+    border-radius: 3px;
+    color: rgb(4, 77, 97);
+    height: 30px;
+    margin: 2px;
+    width: 75px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button.booking-save:hover {
+    border: none;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(4, 97, 43);
+}
+
+.button.booking-cancel {
+    border: none;
+    border-radius: 3px;
+    color: rgb(4, 77, 97);
+    height: 30px;
+    margin: 2px;
+    width: 75px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button.booking-cancel:hover {
+    border: none;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(176, 179, 21);
+}
+
+
+.button-container.bookig-div1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.button.booking-delete {
+    border: none;
+    border-radius: 3px;
+    color: rgb(4, 77, 97);
+    height: 30px;
+    width: 75px;
+    margin: 2px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button.booking-delete:hover {
+    border: none;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(166, 46, 46);
+}
+
+
+.button.booking-edit {
+    border: none;
+    border-radius: 3px;
+    color: rgb(4, 77, 97);
+    height: 30px;
+    width: 75px;
+    margin: 2px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button.booking-edit:hover {
+    border: none;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(166, 162, 46);
+}
+
+
