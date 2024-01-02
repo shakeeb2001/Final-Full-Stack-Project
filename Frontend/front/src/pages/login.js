@@ -76,7 +76,7 @@ export default function Login({ updateLoginStatus }) {
           />
         </Form.Group>
         <div className="button-container">
-        <button className='button'>Button</button>
+        <button className='button'>Login</button>
         </div>
         <p className="signup-link">
           Don't have an account? <Link className="signup-link-route" to="/signup">Sign Up</Link>
