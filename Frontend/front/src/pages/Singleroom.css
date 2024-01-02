@@ -103,6 +103,13 @@
   transform: scale(1.05);
 }
 
+.button-container.reserve-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
 .button.reserver {
   border: none;
   border-radius: 5px;
