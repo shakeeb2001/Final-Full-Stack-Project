@@ -83,7 +83,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: red; /* Set your desired background color */
+    background-color: rgba(255, 255, 255, 0.696); /* Set your desired background color */
     border-radius: 10rem;
     z-index: -2;
 }
@@ -107,5 +107,15 @@ h2 {
 .button:hover:before {
     width: 100%;
 }
+.signup-link{
+    text-align: center;
+}
+.signup-link-route{
+    color: #bbbbbb;
+    text-decoration: none;
+}
+.signup-link-route:hover{
+    color: #ffffff;
 
+}
 
