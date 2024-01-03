@@ -215,6 +215,7 @@ body {
 
 .button.seemore.booknow{
   font-size: medium;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
   
@@ -247,7 +248,4 @@ body {
 .card-body-event:hover h4 {
   opacity: 1;
   display: block;
-}
-#dining-container .dining-card .button-container {
-  margin-top: 20px;
 }
