@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div>
-    <div className="Container1" id='container'>
+    <div className="Container1">
       <img src={Background} alt="Background" className="background-image-new img-fluid" />
       <div className="contentContainer text-center text-md-left">
         <h1 className="homeTitle">Welcome to Crystal Cascade Hotel</h1>
