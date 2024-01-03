@@ -187,7 +187,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 70%;
 
 }
 
@@ -212,9 +212,11 @@ body {
 .event-card-adj{
   margin-left: 7px;
 }
-.btn-secondary-booknow{
-  color: aqua;
+
+.button.seemore.booknow{
+  font-size: medium;
 }
+
   
 .button-container.see-div{
   display: flex;

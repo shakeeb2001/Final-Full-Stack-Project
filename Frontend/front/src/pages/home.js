@@ -51,7 +51,7 @@ export default function Home() {
             stands as a beacon of hospitality along the coastline of Colombo.
             <br></br>
             {isLoggedIn ? (
-              <button className='button seemore'  onClick={handleLogin} >
+              <button className='button seemore booknow'  onClick={handleLogin} >
                 Book Now
               </button>
             ) : (
