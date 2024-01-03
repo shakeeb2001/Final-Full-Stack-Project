@@ -346,5 +346,5 @@ app.get('/reservations/:idNumber', async (req, res) => {
 
 
 httpServer.listen(3001, () => {
-    console.log('WebSocket server is running on port 3001');
+    console.log('WebSocket server is running port 3001');
   });
