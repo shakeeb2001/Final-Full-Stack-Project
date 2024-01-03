@@ -101,12 +101,10 @@ export default function Home() {
           </div>
         </div>
       </Slider>
-
       <br></br>
       <div className="row">
       </div>
     </div>
- 
     <div className="Container3" id="dining-container">
       <h1 className="h1-dining">Dining at Crystel Cascade</h1>
       <div className="row">
