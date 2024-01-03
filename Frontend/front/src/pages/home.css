@@ -187,7 +187,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80%;
+  height: 100%;
 }
 
 #dining-container .dining-card:hover {
@@ -195,27 +195,24 @@ body {
   color: white;
 }
 
-@media (max-width: 767px) {
-  .card {
-    height: auto;
-  }
+.dining-card .card-title,
+.dining-card .card-text {
+  text-align: center;
 }
 
-.card-img-top-dinning02{
+
+
+.card-img-top-dining02 {
   width: 100%;
   height: 56%;
 }
 
 
-
 .event-card-adj{
   margin-left: 7px;
 }
-.btn-secondary-booknow{
-  color: aqua;
-}
   
-.button-container.seemore-div{
+.button-container.seemore-div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -237,4 +234,9 @@ body {
   color: rgb(255, 255, 255);
   background-color: rgb(4, 77, 97);
   transform: scale(1.0);
+}
+@media (max-width: 767px) {
+  .card {
+    height: auto;
+  }
 }
