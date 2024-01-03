@@ -55,14 +55,10 @@
 
 
 .button-container.event-div {
-  background-color: rgba(170, 170, 170, 0.56);
-  border: none;
-  position: absolute;
-  right: 50px;
-  top :120px;
-  color: white;
-  cursor: pointer;
-  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .button.login {
