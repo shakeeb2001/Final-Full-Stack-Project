@@ -121,17 +121,17 @@ const Event = ({ isAdmin }) => {
       <div className="container">
         {cards.map((card) => (
           <Card key={card._id} className="card1">
-            <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
-            <Card.Body>
-              <Card.Title>{card.title}</Card.Title>
-              <Card.Text>{card.description}</Card.Text>
-            </Card.Body>
-            {isAdmin && (
-                <div className="button-container event-delete-div">
-                  <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
-                </div>
-              )}
-          </Card>
+          <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
+          <Card.Body>
+            <Card.Title>{card.title}</Card.Title>
+            <Card.Text>{card.description}</Card.Text>
+          </Card.Body>
+          {isAdmin && (
+            <div className="button-container event-delete-div">
+              <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
+            </div>
+          )}
+        </Card>
         ))}
 
         <Modal show={showModal} onHide={handleCloseModal}>
