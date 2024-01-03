@@ -14,7 +14,7 @@ export default function DoubleRoom({ isLoggedIn }) {
     phoneNumber: '',
     checkIn: '',
     checkOut: '',
-    roomType: 'Delux Room',
+    roomType: 'Deluxe Room',
   
   });
 
@@ -74,7 +74,7 @@ export default function DoubleRoom({ isLoggedIn }) {
             phoneNumber: '',
             checkIn: '',
             checkOut: '',
-            roomType: 'Delux Room',
+            roomType: 'Deluxe Room',
           });
 
           setShowModal(false);
@@ -95,7 +95,7 @@ export default function DoubleRoom({ isLoggedIn }) {
       phoneNumber: '',
       checkIn: '',
       checkOut: '',
-      roomType: 'Delux Room'
+      roomType: 'Deluxe Room'
     });
 
     setShowModal(false);
@@ -106,9 +106,9 @@ export default function DoubleRoom({ isLoggedIn }) {
     <div className="room-container">
       <img src={DeluxImg} alt="Background" className="background-image" id="doubleroom" />
       <div className="room-info-container">
-        <h2>Delux Single Room</h2>
+        <h2>Deluxe Single Room</h2>
         <p>
-          Delux Single Room is can reserved for two guests. There is a bedroom with a
+          Deluxe Single Room is can reserved for two guests. There is a bedroom with a
           double-size one beds and a private bathroom.
         </p>
         <div className="room-details">
