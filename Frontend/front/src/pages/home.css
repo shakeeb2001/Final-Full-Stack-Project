@@ -169,6 +169,7 @@ body {
   color: white;
   position: relative;
   overflow: hidden;
+  display: flex;
   padding-left: 43px;
 }
 
