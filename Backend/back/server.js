@@ -13,8 +13,9 @@ const BookingModel = require('../back/models/bookinghistrotymodel');
 
 
 const app = express(); 
-const server = http.createServer(app);
-const io = socketIo(server);
+const httpServer = require('http').createServer(app);
+const io = require('socket.io')(httpServer);
+
 
 app.use(cors(
 
@@ -344,6 +345,6 @@ app.get('/reservations/:idNumber', async (req, res) => {
 });
 
 
-app.listen(3001, () => {
-    console.log("server is running");
-});
+httpServer.listen(3001, () => {
+    console.log('WebSocket server is running on port 3001');
+  });
