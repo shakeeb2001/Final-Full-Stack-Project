@@ -51,13 +51,13 @@ export default function Home() {
             stands as a beacon of hospitality along the coastline of Colombo.
             <br></br>
             {isLoggedIn ? (
-              <button className="btn btn-secondary-booknow" onClick={handleLogin} >
+              <button className='button seemore'  onClick={handleLogin} >
                 Book Now
               </button>
             ) : (
-              <Link to='/roomtype' className="btn btn-secondary" onClick={handleLogin}>
+              <button to='/roomtype' className='button seemore' onClick={handleLogin}>
                 Log in to Book Now
-              </Link>
+              </button>
             )}
           </i></h2>
         </div>

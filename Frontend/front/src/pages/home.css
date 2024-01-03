@@ -187,7 +187,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80%;
+  height: 100%;
 
 }
 
@@ -221,6 +221,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-bottom: 50px;
 }
 
 .button.seemore{
