@@ -62,7 +62,7 @@ const Event = ({ isAdmin }) => {
     }
   };
 
-  function dataURItoBlob(dataURI) {
+  const dataURItoBlob = (dataURI) => {
     const byteString = atob(dataURI.split(',')[1]);
     const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
     const ab = new ArrayBuffer(byteString.length);
@@ -71,7 +71,7 @@ const Event = ({ isAdmin }) => {
       ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ab], { type: mimeString });
-  }
+  };
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -108,91 +108,74 @@ const Event = ({ isAdmin }) => {
       console.error('Error:', error);
     }
   };
-   // Inside the Dining component
-useEffect(() => {
-  console.log('isAdmin:', isAdmin);
-  const fetchCards = async () => {
-    // ... (rest of the code)
-  };
-
-  fetchCards();
-}, [isAdmin]);
-
-useEffect(() => {
-  console.log('isAdmin:', isAdmin);
-  // ... rest of the code
-}, [isAdmin]);
 
   return (
     <div>
       <div className="container-add-btn">
-      {isAdmin && (
-      <div className="button-container event-div">
-        <button className='button event-add' onClick={handleShowModal} >Add</button>
+        {isAdmin && (
+          <div className="button-container event-div">
+            <button className='button event-add' onClick={handleShowModal}>Add</button>
+          </div>
+        )}
       </div>
-      )}
-        </div>
-    <div className="container">
-  
-       {cards.map((card, index) => (
-        <Card key={index} className="card1">
-          <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
-          <Card.Body>
-            <Card.Title>{card.title}</Card.Title>
-            <Card.Text>{card.description}</Card.Text>
-            {isAdmin && (
-            <div className="button-container event-delete-div">
-              <button className='button event-delete' onClick={() => handleDeleteCard(card._id)} >Add</button>
-             </div>
-            )}
+      <div className="container">
+        {cards.map((card) => (
+          <Card key={card._id} className="card1">
+            <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
+            <Card.Body>
+              <Card.Title>{card.title}</Card.Title>
+              <Card.Text>{card.description}</Card.Text>
+              {isAdmin && (
+                <div className="button-container event-delete-div">
+                  <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
+                </div>
+              )}
+            </Card.Body>
+          </Card>
+        ))}
 
-          </Card.Body>
-        </Card>
-      ))}
-
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add New Card</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formTitle">
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter title"
-                name="title"
-                value={newCard.title}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formDescription">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
-                placeholder="Enter description"
-                name="description"
-                value={newCard.description}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formImage">
-              <Form.Label>Image</Form.Label>
-              <Form.Control type="file" name="image" onChange={handleInputChange} accept="image/*" />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-         <div className="button-container event-card-div">
-           <button className='button event-close-card' onClick={handleCloseModal} >Close</button>
-           <button className='button event-add-card' onClick={handleAddCard} >Add Card</button>
-         </div>
-        </Modal.Footer>
-      </Modal>
-    </div>
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add New Card</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="formTitle">
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter title"
+                  name="title"
+                  value={newCard.title}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formDescription">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  placeholder="Enter description"
+                  name="description"
+                  value={newCard.description}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formImage">
+                <Form.Label>Image</Form.Label>
+                <Form.Control type="file" name="image" onChange={handleInputChange} accept="image/*" />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <div className="button-container event-card-div">
+              <button className='button event-close-card' onClick={handleCloseModal}>Close</button>
+              <button className='button event-add-card' onClick={handleAddCard}>Add Card</button>
+            </div>
+          </Modal.Footer>
+        </Modal>
+      </div>
     </div>
   );
 };
 
 export default Event;
-
