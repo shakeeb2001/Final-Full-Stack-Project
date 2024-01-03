@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import './event.css'; // Import the CSS file
+import './event.css'; 
 
 const Dining = ({ isAdmin }) => {
   const [showModal, setShowModal] = useState(false);
