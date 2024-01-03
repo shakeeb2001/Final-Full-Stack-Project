@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
+//import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import io from 'socket.io-client';
-import './event.css';
-
-const socket = io('https://final-full-stack-project-backend.vercel.app');
+import './event.css'; // Import the CSS file
 
 const Event = ({ isAdmin }) => {
   const [showModal, setShowModal] = useState(false);
@@ -56,9 +54,6 @@ const Event = ({ isAdmin }) => {
         setCards([...cards, addedEvent]);
         setNewCard({ title: '', description: '', image: null });
         handleCloseModal();
-
-        // Emit a newEvent WebSocket event
-        socket.emit('newEvent', addedEvent);
       } else {
         console.error('Failed to add a new event card:', response.status, response.statusText);
       }
@@ -79,11 +74,6 @@ const Event = ({ isAdmin }) => {
   };
 
   useEffect(() => {
-    // WebSocket event listener for newEvent
-    socket.on('newEvent', (event) => {
-      setCards((prevCards) => [...prevCards, event]);
-    });
-
     const fetchCards = async () => {
       try {
         const response = await fetch('https://final-full-stack-project-backend.vercel.app/events');
@@ -111,9 +101,6 @@ const Event = ({ isAdmin }) => {
       if (response.ok) {
         const updatedCards = cards.filter((card) => card._id !== cardId);
         setCards(updatedCards);
-
-        // Emit a deleteEvent WebSocket event
-        socket.emit('deleteEvent', cardId);
       } else {
         console.error('Failed to delete event card:', response.status, response.statusText);
       }
@@ -133,18 +120,18 @@ const Event = ({ isAdmin }) => {
       </div>
       <div className="container">
         {cards.map((card) => (
-          <Card key={card._id} className="card1">
-            <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
-            <Card.Body>
-              <Card.Title>{card.title}</Card.Title>
-              <Card.Text>{card.description}</Card.Text>
-            </Card.Body>
-            {isAdmin && (
-              <div className="button-container event-delete-div">
-                <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
-              </div>
-            )}
-          </Card>
+           <Card key={card._id} className="card1">
+           <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
+           <Card.Body>
+             <Card.Title>{card.title}</Card.Title>
+             <Card.Text>{card.description}</Card.Text>
+           </Card.Body>
+           {isAdmin && (
+             <div className="button-container event-delete-div">
+               <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
+             </div>
+           )}
+         </Card>
         ))}
 
         <Modal show={showModal} onHide={handleCloseModal}>

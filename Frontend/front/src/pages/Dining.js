@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
+
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import io from 'socket.io-client';
-import './event.css';
-
-const socket = io('https://final-full-stack-project-backend.vercel.app');
+import './event.css'; 
 
 const Dining = ({ isAdmin }) => {
   const [showModal, setShowModal] = useState(false);
@@ -52,22 +50,19 @@ const Dining = ({ isAdmin }) => {
       });
 
       if (response.ok) {
-        const addedDining = await response.json();
-        setCards([...cards, addedDining]);
+        const addedEvent = await response.json();
+        setCards([...cards, addedEvent]);
         setNewCard({ title: '', description: '', image: null });
         handleCloseModal();
-
-        // Emit a newDining WebSocket event
-        socket.emit('newDining', addedDining);
       } else {
-        console.error('Failed to add a new dining card:', response.status, response.statusText);
+        console.error('Failed to add a new event card:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
-  const dataURItoBlob = (dataURI) => {
+  function dataURItoBlob(dataURI) {
     const byteString = atob(dataURI.split(',')[1]);
     const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
     const ab = new ArrayBuffer(byteString.length);
@@ -76,14 +71,9 @@ const Dining = ({ isAdmin }) => {
       ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ab], { type: mimeString });
-  };
+  }
 
   useEffect(() => {
-    // WebSocket event listener for newDining
-    socket.on('newDining', (dining) => {
-      setCards((prevCards) => [...prevCards, dining]);
-    });
-
     const fetchCards = async () => {
       try {
         const response = await fetch('https://final-full-stack-project-backend.vercel.app/dinings');
@@ -102,6 +92,22 @@ const Dining = ({ isAdmin }) => {
     fetchCards();
   }, []);
 
+
+  // Inside the Dining component
+useEffect(() => {
+  console.log('isAdmin:', isAdmin);
+  const fetchCards = async () => {
+    // ... (rest of the code)
+  };
+
+  fetchCards();
+}, [isAdmin]);
+
+useEffect(() => {
+  console.log('isAdmin:', isAdmin);
+  // ... rest of the code
+}, [isAdmin]);
+
   const handleDeleteCard = async (cardId) => {
     try {
       const response = await fetch(`https://final-full-stack-project-backend.vercel.app/dinings/${cardId}`, {
@@ -111,11 +117,8 @@ const Dining = ({ isAdmin }) => {
       if (response.ok) {
         const updatedCards = cards.filter((card) => card._id !== cardId);
         setCards(updatedCards);
-
-        // Emit a deleteDining WebSocket event
-        socket.emit('deleteDining', cardId);
       } else {
-        console.error('Failed to delete dining card:', response.status, response.statusText);
+        console.error('Failed to delete event card:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error:', error);
