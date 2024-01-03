@@ -52,3 +52,32 @@
     height: auto;
   }
 }
+
+
+.button-container.event-div {
+  background-color: rgba(170, 170, 170, 0.56);
+  border: none;
+  position: absolute;
+  right: 50px;
+  top :120px;
+  color: white;
+  cursor: pointer;
+  width: 150px;
+}
+
+.button.login {
+  border: none;
+  border-radius: 3px;
+  color: rgb(4, 77, 97);
+  height: 30px;
+  width: 150px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button.login:hover {
+  border: none;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(4, 77, 97);
+  transform: scale(1.05);
+}

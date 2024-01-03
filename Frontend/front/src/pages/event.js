@@ -127,9 +127,9 @@ useEffect(() => {
     <div>
       <div className="container-add-btn">
       {isAdmin && (
-        <Button variant="primary" className="add-button" onClick={handleShowModal}>
-          Add
-        </Button>
+      <div className="button-container event-div">
+        <button className='button event-add' onClick={handleShowModal} >Add</button>
+      </div>
       )}
         </div>
     <div className="container">
@@ -141,9 +141,9 @@ useEffect(() => {
             <Card.Title>{card.title}</Card.Title>
             <Card.Text>{card.description}</Card.Text>
             {isAdmin && (
-              <Button variant="secondary" onClick={() => handleDeleteCard(card._id)}>
-                Delete
-              </Button>
+            <div className="button-container event-delete-div">
+              <button className='button event-delete' onClick={() => handleDeleteCard(card._id)} >Add</button>
+             </div>
             )}
 
           </Card.Body>
@@ -197,3 +197,4 @@ useEffect(() => {
 };
 
 export default Event;
+
