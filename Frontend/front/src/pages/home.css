@@ -216,3 +216,26 @@ body {
   color: aqua;
 }
   
+.button-container.seemore-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.button.seemore{
+  border: none;
+  border-radius: 3px;
+  color: rgb(4, 77, 97);
+  height: 30px;
+  width: 130px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button.seemore:hover {
+  border: none;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(4, 77, 97);
+  transform: scale(1.0);
+}
