@@ -5,20 +5,22 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const http = require('http');
 const socketIo = require('socket.io');
-
 const SignupModel = require('../back/models/signupmodel');
 const EventModel = require('../back/models/eventcardmodel');
 const DiningModel = require('../back/models/diningcardmodel');
 const BookingModel = require('../back/models/bookinghistrotymodel');
 
-const app = express();
+
+
+const app = express(); 
 const server = http.createServer(app);
 const io = socketIo(server);
 
 app.use(cors(
+
     {
-        origin: ["https://final-full-stack-project-frontend.vercel.app"],
-        methods: ["POST", "GET", "PUT", "DELETE"],
+        origin: ["https://final-full-stack-project-frontend.vercel.app"], 
+        methods: ["POST","GET","PUT","DELETE"], 
         credentials: true
     }
 ));
@@ -31,11 +33,6 @@ const connection = mongoose.connection;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.get("/hellow", (req, res) => {
-    res.json("hellow");
-});
-
-// WebSocket Connection
 io.on('connection', (socket) => {
     console.log('Client connected:', socket.id);
 
@@ -51,6 +48,11 @@ io.on('connection', (socket) => {
 
     // More WebSocket events can be added based on your requirements
 });
+
+
+app.get("/hellow" , (req,res)=>{
+    res.json("hellow");
+})
 
 app.post('/signup', (req, res) => {
     SignupModel.create(req.body)
@@ -342,6 +344,6 @@ app.get('/reservations/:idNumber', async (req, res) => {
 });
 
 
-app.listen(4000, () => {
+app.listen(3001, () => {
     console.log("server is running");
 });
