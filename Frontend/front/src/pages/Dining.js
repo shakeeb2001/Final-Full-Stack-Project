@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import './Dining.css'; // Import the CSS file
+import './event.css'; // Import the CSS file
 
 const Dining = ({ isAdmin }) => {
   const [showModal, setShowModal] = useState(false);
@@ -127,72 +127,69 @@ useEffect(() => {
 
   return (
     <div>
-       {isAdmin && (
-        <Button variant="primary" className="add-button" onClick={handleShowModal}>
-          Add
-        </Button>
-      )}
-
-    <div className="container">
-
-      {cards.map((card, index) => (
-        <Card key={index} className="card1">
+       <div className="container-add-btn">
+        {isAdmin && (
+          <div className="button-container event-div">
+            <button className='button event-add' onClick={handleShowModal}>Add</button>
+          </div>
+        )}
+      </div>
+      <div className="container">
+        {cards.map((card) => (
+          <Card key={card._id} className="card1">
           <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
           <Card.Body>
             <Card.Title>{card.title}</Card.Title>
             <Card.Text>{card.description}</Card.Text>
-
-            {isAdmin && (
-              <Button variant="secondary" onClick={() => handleDeleteCard(card._id)}>
-                Delete
-              </Button>
-            )}
           </Card.Body>
+          {isAdmin && (
+            <div className="button-container event-delete-div">
+              <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
+            </div>
+          )}
         </Card>
-      ))}
+        ))}
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add New Card</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formTitle">
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter title"
-                name="title"
-                value={newCard.title}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formDescription">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
-                placeholder="Enter description"
-                name="description"
-                value={newCard.description}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formImage">
-              <Form.Label>Image</Form.Label>
-              <Form.Control type="file" name="image" onChange={handleInputChange} accept="image/*" />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleAddCard}>
-            Add Card
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add New Card</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="formTitle">
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter title"
+                  name="title"
+                  value={newCard.title}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formDescription">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  placeholder="Enter description"
+                  name="description"
+                  value={newCard.description}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formImage">
+                <Form.Label>Image</Form.Label>
+                <Form.Control type="file" name="image" onChange={handleInputChange} accept="image/*" />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <div className="button-container event-card-div">
+              <button className='button event-close-card' onClick={handleCloseModal}>Close</button>
+              <button className='button event-add-card' onClick={handleAddCard}>Add Card</button>
+            </div>
+          </Modal.Footer>
+        </Modal>
+      </div>
     </div>
   );
 };
