@@ -116,9 +116,9 @@ export default function Home() {
             <div className="card-body">
               <h5 className="card-title">Cafe</h5>
               <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-              <Link to="/dining" className="btn btn-secondary">
-                See More
-              </Link>
+              <button to="/dining" className='button seemore'>
+                 See More
+             </button>
             </div>
           </div>
         </div>
