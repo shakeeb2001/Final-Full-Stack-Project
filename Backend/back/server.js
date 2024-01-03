@@ -20,7 +20,7 @@ app.use(cors(
 ));
 
 app.use(express.json({ limit: '20mb' }));
-const MONGODB_URI = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/test?retryWrites=true&w=majority';
+const MONGODB_URI = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/Crystal-Cascade-Hotel?retryWrites=true&w=majority';
 mongoose.connect(MONGODB_URI);
 
 const connection = mongoose.connection;
