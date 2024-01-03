@@ -116,11 +116,11 @@ export default function Home() {
               <div className="card-body">
                 <h5 className="card-title">Cafe</h5>
                 <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-                <div className="button-container seemore-div">
+             
                  <button to="/dining" className='button seemore'>
                    See More
                  </button>
-              </div>
+
             </div>
           </div>
           <div className="col-md-4">
@@ -129,11 +129,11 @@ export default function Home() {
               <div className="card-body">
                 <h5 className="card-title">Cafe</h5>
                 <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-                <div className="button-container seemore-div">
+     
                  <button to="/dining" className='button seemore'>
                    See More
                  </button>
-                </div>
+
               </div>
             </div>
           </div>
@@ -143,11 +143,9 @@ export default function Home() {
               <div className="card-body">
                 <h5 className="card-title">Cafe</h5>
                 <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-                <div className="button-container seemore-div">
                  <button to="/dining" className='button seemore'>
                    See More
                  </button>
-                </div>
               </div>
             </div>
           </div>
