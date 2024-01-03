@@ -241,3 +241,11 @@ body {
   background-color: rgb(4, 77, 97);
   transform: scale(1.03);
 }
+
+.card-body-event:hover h4 {
+  opacity: 1;
+  display: block;
+}
+#dining-container .dining-card .button-container {
+  margin-top: 20px; /* Adjust as needed */
+}

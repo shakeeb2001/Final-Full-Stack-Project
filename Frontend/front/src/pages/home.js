@@ -79,7 +79,7 @@ export default function Home() {
             <div className="card-body-event">
               <h3>Engagement</h3>
               <h4>Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
-            stands as a beacon of hospitality along the coastline of Colombo.</h4>
+                   stands as a beacon of hospitality along the coastline of Colombo.</h4>
               <Link to='/event'><img src={EventImageOne} alt="Background" className="event-image-two img-fluid" /></Link>
             </div>
           </div>
@@ -88,7 +88,9 @@ export default function Home() {
           <div className="card">
             <div className="card-body-event">
               <h3>Wedding</h3>
-              <Link to='/event'><img src={EventImageTwo} alt="Background" className="event-image-one img-fluid" /></Link>
+              <h4>Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
+                   stands as a beacon of hospitality along the coastline of Colombo.</h4>
+              <Link to='/event'><img src={EventImageTwo} alt="Background" className="event-image-two img-fluid" /></Link>
             </div>
           </div>
         </div>
@@ -96,7 +98,9 @@ export default function Home() {
           <div className="card">
             <div className="card-body-event">
               <h3>Meetings</h3>
-              <Link to='/event'><img src={EventImageThree} alt="Background" className="event-image-one img-fluid" /></Link>
+              <h4>Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
+                   stands as a beacon of hospitality along the coastline of Colombo.</h4>
+              <Link to='/event'><img src={EventImageThree} alt="Background" className="event-image-two img-fluid" /></Link>
             </div>
           </div>
         </div>
@@ -106,52 +110,52 @@ export default function Home() {
       </div>
     </div>
     <div className="Container3" id="dining-container">
-      <h1 className="h1-dining">Dining at Crystel Cascade</h1>
-      <div className="row">
-        <div className="col-md-4">
-          <div className="card dining-card">
-            <img src={DinningimgOne} className="card-img-top-dinning02" alt="Dining" />
-            <div className="card-body">
-              <h5 className="card-title">Cafe</h5>
-              <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-              <div className="button-container seem-div">
-               <button to="/dining" className='button seemore'>
-                 See More
-              </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card dining-card">
-            <img src={DinningimgTwo} className="card-img-top-dinning02" alt="Dining" />
-            <div className="card-body">
-              <h5 className="card-title">Cafe</h5>
-              <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-              <div className="button-container seem-div">
-               <button to="/dining" className='button seemore'>
-                 See More
-              </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card dining-card">
-            <img src={DinningimgThree} className="card-img-top-dinning02" alt="Dining" />
-            <div className="card-body">
-              <h5 className="card-title">Cafe</h5>
-              <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-              <div className="button-container seem-div">
-               <button to="/dining" className='button seemore'>
-                 See More
-              </button>
-              </div>
-            </div>
+  <h1 className="h1-dining">Dining at Crystel Cascade</h1>
+  <div className="row">
+    <div className="col-md-4">
+      <div className="card dining-card">
+        <img src={DinningimgOne} className="card-img-top-dinning02" alt="Dining" />
+        <div className="card-body">
+          <h5 className="card-title">Cafe</h5>
+          <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
+          <div className="button-container seem-div">
+            <button to="/dining" className='button seemore'>
+              See More
+            </button>
           </div>
         </div>
       </div>
     </div>
+    <div className="col-md-4">
+      <div className="card dining-card">
+        <img src={DinningimgTwo} className="card-img-top-dinning02" alt="Dining" />
+        <div className="card-body">
+          <h5 className="card-title">Restaurant</h5>
+          <p className="card-text">Experience exquisite dining in our restaurant with a variety of dishes.</p>
+          <div className="button-container seem-div">
+            <button to="/dining" className='button seemore'>
+              See More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="col-md-4">
+      <div className="card dining-card">
+        <img src={DinningimgThree} className="card-img-top-dinning02" alt="Dining" />
+        <div className="card-body">
+          <h5 className="card-title">Bar</h5>
+          <p className="card-text">Enjoy a vibrant atmosphere at our bar with a wide selection of drinks.</p>
+          <div className="button-container seem-div">
+            <button to="/dining" className='button seemore'>
+              See More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
   );
 }
