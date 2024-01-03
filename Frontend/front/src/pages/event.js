@@ -125,12 +125,12 @@ const Event = ({ isAdmin }) => {
             <Card.Body>
               <Card.Title>{card.title}</Card.Title>
               <Card.Text>{card.description}</Card.Text>
-              {isAdmin && (
+            </Card.Body>
+            {isAdmin && (
                 <div className="button-container event-delete-div">
                   <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
                 </div>
               )}
-            </Card.Body>
           </Card>
         ))}
 
