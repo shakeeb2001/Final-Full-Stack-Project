@@ -184,7 +184,7 @@ body {
   margin-top: 50px;
   border: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 80%;
