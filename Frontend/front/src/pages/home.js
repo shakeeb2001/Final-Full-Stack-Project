@@ -41,115 +41,113 @@ export default function Home() {
 
   return (
     <div>
-      <div className="Container1" id='container'>
-        <img src={Background} alt="Background" className="background-image-new img-fluid" />
-        <div className="contentContainer text-center text-md-left">
-          <h1 className="homeTitle">Welcome to Crystal Cascade Hotel</h1>
-          <div className="backgroundImage">
-            <h2 className='h2-new'><i>
-              Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
-              stands as a beacon of hospitality along the coastline of Colombo.
-              <br></br>
-              {isLoggedIn ? (
-                <button className="btn btn-secondary-booknow" onClick={handleLogin} >
-                  Book Now
-                </button>
-              ) : (
-                <Link to='/roomtype' className="btn btn-secondary" onClick={handleLogin}>
-                  Log in to Book Now
-                </Link>
-              )}
-            </i></h2>
-          </div>
-          <br />
+    <div className="Container1" id='container'>
+      <img src={Background} alt="Background" className="background-image-new img-fluid" />
+      <div className="contentContainer text-center text-md-left">
+        <h1 className="homeTitle">Welcome to Crystal Cascade Hotel</h1>
+        <div className="backgroundImage">
+          <h2 className='h2-new'><i>
+            Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
+            stands as a beacon of hospitality along the coastline of Colombo.
+            <br></br>
+            {isLoggedIn ? (
+              <button className="btn btn-secondary-booknow" onClick={handleLogin} >
+                Book Now
+              </button>
+            ) : (
+              <Link to='/roomtype' className="btn btn-secondary" onClick={handleLogin}>
+                Log in to Book Now
+              </Link>
+            )}
+          </i></h2>
         </div>
+        <br />
       </div>
+    </div>
 
-      <div className="Container2" id="events-container">
-        <h1 className="h1-event">Upcoming Events</h1>
-        <video autoPlay loop muted className="background-video">
-          <source src={BackgroundVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+    <div className="Container2" id="events-container">
+      <h1 className="h1-event">Upcoming Events</h1>
+      <video autoPlay loop muted className="background-video">
+        <source src={BackgroundVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-        <br></br>
-        <Slider {...settings}>
-          <div className="event-card-adj">
-            <div className="card">
-              <div className="card-body-event">
-                <h3>Engagement</h3>
-                <h4>Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
-              stands as a beacon of hospitality along the coastline of Colombo.</h4>
-                <Link to='/event'><img src={EventImageOne} alt="Background" className="event-image-two img-fluid" /></Link>
-              </div>
+      <br></br>
+      <Slider {...settings}>
+        <div className="event-card-adj">
+          <div className="card">
+            <div className="card-body-event">
+              <h3>Engagement</h3>
+              <h4>Perched on the pristine shores of Mount Lavinia Beach, Hotel Crystel Cascade
+            stands as a beacon of hospitality along the coastline of Colombo.</h4>
+              <Link to='/event'><img src={EventImageOne} alt="Background" className="event-image-two img-fluid" /></Link>
             </div>
           </div>
-          <div className="event-card-adj">
-            <div className="card">
-              <div className="card-body-event">
-                <h3>Wedding</h3>
-                <Link to='/event'><img src={EventImageTwo} alt="Background" className="event-image-one img-fluid" /></Link>
-              </div>
-            </div>
-          </div>
-          <div className="event-card-adj">
-            <div className="card">
-              <div className="card-body-event">
-                <h3>Meetings</h3>
-                <Link to='/event'><img src={EventImageThree} alt="Background" className="event-image-one img-fluid" /></Link>
-              </div>
-            </div>
-          </div>
-        </Slider>
-
-        <br></br>
-        <div className="row">
         </div>
-      </div>
-   
-      <div className="Container3" id="dining-container">
-        <h1 className="h1-dining">Dining at Crystel Cascade</h1>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="card dining-card">
-              <img src={DinningimgOne} className="card-img-top-dinning02" alt="Dining" />
-              <div className="card-body">
-                <h5 className="card-title">Cafe</h5>
-                <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-                 <button to="/dining" className='button seemore'>
-                   See More
-                 </button>
+        <div className="event-card-adj">
+          <div className="card">
+            <div className="card-body-event">
+              <h3>Wedding</h3>
+              <Link to='/event'><img src={EventImageTwo} alt="Background" className="event-image-one img-fluid" /></Link>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card dining-card">
-              <img src={DinningimgTwo} className="card-img-top-dinning02" alt="Dining" />
-              <div className="card-body">
-                <h5 className="card-title">Cafe</h5>
-                <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-     
-                 <button to="/dining" className='button seemore'>
-                   See More
-                 </button>
+        </div>
+        <div className="event-card-adj">
+          <div className="card">
+            <div className="card-body-event">
+              <h3>Meetings</h3>
+              <Link to='/event'><img src={EventImageThree} alt="Background" className="event-image-one img-fluid" /></Link>
+            </div>
+          </div>
+        </div>
+      </Slider>
 
-              </div>
+      <br></br>
+      <div className="row">
+      </div>
+    </div>
+ 
+    <div className="Container3" id="dining-container">
+      <h1 className="h1-dining">Dining at Crystel Cascade</h1>
+      <div className="row">
+        <div className="col-md-4">
+          <div className="card dining-card">
+            <img src={DinningimgOne} className="card-img-top-dinning02" alt="Dining" />
+            <div className="card-body">
+              <h5 className="card-title">Cafe</h5>
+              <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
+              <Link to="/dining" className="btn btn-secondary">
+                See More
+              </Link>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card dining-card">
-              <img src={DinningimgThree} className="card-img-top-dinning02" alt="Dining" />
-              <div className="card-body">
-                <h5 className="card-title">Cafe</h5>
-                <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
-                 <button to="/dining" className='button seemore'>
-                   See More
-                 </button>
-              </div>
+        </div>
+        <div className="col-md-4">
+          <div className="card dining-card">
+            <img src={DinningimgTwo} className="card-img-top-dinning02" alt="Dining" />
+            <div className="card-body">
+              <h5 className="card-title">Cafe</h5>
+              <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
+              <Link to="/dining" className="btn btn-secondary">
+                See More
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4">
+          <div className="card dining-card">
+            <img src={DinningimgThree} className="card-img-top-dinning02" alt="Dining" />
+            <div className="card-body">
+              <h5 className="card-title">Cafe</h5>
+              <p className="card-text">Relax with a cup of coffee and delicious pastries in our cozy cafe.</p>
+              <Link to="/dining" className="btn btn-secondary">
+                See More
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
   );
 }
