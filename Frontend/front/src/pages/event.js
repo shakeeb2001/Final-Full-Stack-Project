@@ -183,12 +183,10 @@ useEffect(() => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
-          <Button variant="secondary" onClick={handleAddCard}>
-            Add Card
-          </Button>
+         <div className="button-container event-card-div">
+           <button className='button event-close-card' onClick={handleCloseModal} >Close</button>
+           <button className='button event-add-card' onClick={handleAddCard} >Add Card</button>
+         </div>
         </Modal.Footer>
       </Modal>
     </div>

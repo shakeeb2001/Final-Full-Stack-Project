@@ -75,5 +75,70 @@
   border-radius: 3px;
   color: rgb(255, 255, 255);
   background-color: rgb(4, 77, 97);
-  transform: scale(1.05);
+  transform: scale(0.5);
+}
+
+.button-container.event-delete-div {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 100%;
+}
+
+.button.event-delete {
+  border: none;
+  border-radius: 3px;
+  color: rgb(4, 77, 97);
+  height: 30px;
+  width: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button.event-delete:hover {
+  border: none;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(186, 42, 42);
+  transform: scale(0.5);
+}
+
+.button-container.event-card-div {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 100%;
+}
+
+.button.event-close-card {
+  border: none;
+  border-radius: 3px;
+  color: rgb(4, 77, 97);
+  height: 30px;
+  width: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button.event-close-card:hover {
+  border: none;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(186, 42, 42);
+  transform: scale(0.5);
+}
+
+.button.event-add-card {
+  border: none;
+  border-radius: 3px;
+  color: rgb(4, 77, 97);
+  height: 30px;
+  width: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button.event-add-card:hover {
+  border: none;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(3, 130, 30);
+  transform: scale(0.5);
 }
