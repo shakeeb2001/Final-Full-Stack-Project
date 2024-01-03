@@ -57,6 +57,8 @@
 .button-container.event-div {
   display: flex;
   justify-content: right;
+  margin-top: 20px;
+  margin-right: 20px;
   align-items: center;
   height: 100%;
 }
@@ -75,7 +77,7 @@
   border-radius: 3px;
   color: rgb(255, 255, 255);
   background-color: rgb(4, 77, 97);
-  transform: scale(0.5);
+  transform: scale(2.0);
 }
 
 .button-container.event-delete-div {
@@ -99,7 +101,7 @@
   border-radius: 3px;
   color: rgb(255, 255, 255);
   background-color: rgb(186, 42, 42);
-  transform: scale(0.5);
+  transform: scale(2.0);
 }
 
 .button-container.event-card-div {
@@ -123,7 +125,7 @@
   border-radius: 3px;
   color: rgb(255, 255, 255);
   background-color: rgb(186, 42, 42);
-  transform: scale(0.5);
+  transform: scale(2.0);
 }
 
 .button.event-add-card {
@@ -140,5 +142,5 @@
   border-radius: 3px;
   color: rgb(255, 255, 255);
   background-color: rgb(3, 130, 30);
-  transform: scale(0.5);
+  transform: scale(2.0);
 }
