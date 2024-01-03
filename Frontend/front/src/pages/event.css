@@ -90,6 +90,7 @@
 .button.event-delete {
   border: none;
   border-radius: 3px;
+  margin-left: 10px;
   color: rgb(4, 77, 97);
   height: 30px;
   width: 100px;
