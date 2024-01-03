@@ -224,7 +224,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-bottom: 50px;
+  padding-bottom: 40px;
 }
 
 .button.seemore{
@@ -233,7 +233,7 @@ body {
   color: rgb(4, 77, 97);
   height: 30px;
   width: 130px;
-  padding-bottom: 40px;
+
   transition: transform 0.3s ease-in-out;
 }
 
