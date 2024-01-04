@@ -1,14 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const http = require('http'); 
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const SignupModel = require('../back/models/signupmodel');
 const EventModel = require('../back/models/eventcardmodel');
 const DiningModel = require('../back/models/diningcardmodel');
 const BookingModel = require('../back/models/bookinghistrotymodel');
-const socketIO = require('socket.io');
 
 const app = express(); 
 
@@ -28,27 +26,6 @@ mongoose.connect(MONGODB_URI);
 const connection = mongoose.connection;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-
-const server = http.createServer(app);
-const io = require("socket.io")(server, {
-    cors: {
-      origin: "*",
-      credentials: true,
-      methods: ["GET", "POST"],
-    },
-  });
-
-io.on('connection', (socket) => {
-    console.log('A user connected');
-    socket.on('new-event', (event) => {
-        io.emit('new-event-notification', event);
-    });
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
-    });
-});
-
-
 
 app.get("/hellow" , (req,res)=>{
     res.json("hellow");
@@ -142,23 +119,21 @@ app.post('/login', (req, res) => {
         .catch(err => res.json(err));
 });
 
-app.post('/api/events', upload.single('image'), async (req, res) => {
+app.post('/events', upload.single('image'), (req, res) => {
     EventModel.create({
-      title: req.body.title,
-      description: req.body.description,
-      image: req.file.buffer.toString('base64'),
+        title: req.body.title,
+        description: req.body.description,
+        image: req.file.buffer.toString('base64'),
     })
-    .then(newEvent => {
-      // Emit a new event notification to connected clients
-      io.emit('new-event-notification', { title: newEvent.title });
-      console.log('Created new event:', newEvent);
-      res.json(newEvent);
-    })
-    .catch(err => {
-      console.error('Error creating event:', err);
-      res.status(500).json({ error: 'Internal Server Error' });
-    });
-  });
+        .then(newEvent => {
+            console.log('Created new event:', newEvent);
+            res.json(newEvent);
+        })
+        .catch(err => {
+            console.error('Error creating event:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
+});
 
 app.post('/dinings', upload.single('image'), (req, res) => {
     DiningModel.create({
@@ -337,8 +312,6 @@ app.get('/reservations/:idNumber', async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 3001;
-
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(4000, () => {
+    console.log("server is running");
 });
