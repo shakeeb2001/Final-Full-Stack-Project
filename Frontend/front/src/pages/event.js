@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-//import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import './event.css'; // Import the CSS file
+import './event.css';
 
 const Event = ({ isAdmin }) => {
   const [showModal, setShowModal] = useState(false);
   const [cards, setCards] = useState([]);
   const [newCard, setNewCard] = useState({ title: '', description: '', image: null });
+  const [ws, setWs] = useState(null);
+  const [notification, setNotification] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
@@ -53,9 +54,32 @@ const Event = ({ isAdmin }) => {
         const addedEvent = await response.json();
         setCards([...cards, addedEvent]);
         setNewCard({ title: '', description: '', image: null });
+
+        // Send a WebSocket notification
+        if (ws) {
+          ws.send(JSON.stringify({ type: 'newEvent', eventTitle: addedEvent.title }));
+        }
+
         handleCloseModal();
       } else {
         console.error('Failed to add a new event card:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleDeleteCard = async (cardId) => {
+    try {
+      const response = await fetch(`https://final-full-stack-project-backend.vercel.app/events/${cardId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        const updatedCards = cards.filter((card) => card._id !== cardId);
+        setCards(updatedCards);
+      } else {
+        console.error('Failed to delete event card:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -92,22 +116,30 @@ const Event = ({ isAdmin }) => {
     fetchCards();
   }, []);
 
-  const handleDeleteCard = async (cardId) => {
-    try {
-      const response = await fetch(`https://final-full-stack-project-backend.vercel.app/events/${cardId}`, {
-        method: 'DELETE',
-      });
+  useEffect(() => {
+    const newWs = new WebSocket('wss://final-full-stack-project-backend.vercel.app');
 
-      if (response.ok) {
-        const updatedCards = cards.filter((card) => card._id !== cardId);
-        setCards(updatedCards);
-      } else {
-        console.error('Failed to delete event card:', response.status, response.statusText);
+    newWs.onopen = () => {
+      console.log('WebSocket connected');
+    };
+
+    newWs.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === 'newEventNotification') {
+        setNotification(`New event added: ${data.eventTitle}`);
       }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+    };
+
+    newWs.onclose = () => {
+      console.log('WebSocket closed');
+    };
+
+    setWs(newWs);
+
+    return () => {
+      newWs.close();
+    };
+  }, []);
 
   return (
     <div>
@@ -120,18 +152,18 @@ const Event = ({ isAdmin }) => {
       </div>
       <div className="container">
         {cards.map((card) => (
-           <Card key={card._id} className="card1">
-           <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
-           <Card.Body>
-             <Card.Title>{card.title}</Card.Title>
-             <Card.Text>{card.description}</Card.Text>
-           </Card.Body>
-           {isAdmin && (
-             <div className="button-container event-delete-div">
-               <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
-             </div>
-           )}
-         </Card>
+          <Card key={card._id} className="card1">
+            <Card.Img variant="top" src={`data:image/png;base64,${card.image}`} alt={card.title} />
+            <Card.Body>
+              <Card.Title>{card.title}</Card.Title>
+              <Card.Text>{card.description}</Card.Text>
+            </Card.Body>
+            {isAdmin && (
+              <div className="button-container event-delete-div">
+                <button className='button event-delete' onClick={() => handleDeleteCard(card._id)}>Delete</button>
+              </div>
+            )}
+          </Card>
         ))}
 
         <Modal show={showModal} onHide={handleCloseModal}>
@@ -173,6 +205,12 @@ const Event = ({ isAdmin }) => {
             </div>
           </Modal.Footer>
         </Modal>
+
+        {notification && (
+          <div className="notification-container">
+            {notification}
+          </div>
+        )}
       </div>
     </div>
   );
