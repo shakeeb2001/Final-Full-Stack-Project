@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// Navbar.js
+import React from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import NavBootstrap from 'react-bootstrap/Nav';
 import NavbarBootstrap from 'react-bootstrap/Navbar';
@@ -11,30 +12,6 @@ import notificationIcon from '../images/notification.png';
 function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [notification, setNotification] = useState(null);
-
-  const ws = new WebSocket('wss://final-full-stack-project-backend.vercel.app'); 
-
-  useEffect(() => {
-    ws.onopen = () => {
-      console.log('WebSocket connected');
-    };
-
-    ws.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.type === 'newEventNotification') {
-        setNotification(`New event added: ${data.eventTitle}`);
-      }
-    };
-
-    ws.onclose = () => {
-      console.log('WebSocket closed');
-    };
-
-    return () => {
-      ws.close();
-    };
-  }, [ws]);
 
   const handleScrollToEvents = () => {
     const eventsSection = document.getElementById('events-container');
@@ -100,11 +77,6 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
                 Dining
               </NavLink>
             </NavBootstrap.Item>
-            <NavBootstrap.Item>
-              <NavLink to="/aboutus" className="nav-link" onClick={handleScrollToAboutus} activeClassName="active">
-                About Us
-              </NavLink>
-            </NavBootstrap.Item>
             {isAdmin && (
               <NavBootstrap.Item>
                 <NavLink to="/bookinghistory" className="nav-link" activeClassName="active">
@@ -112,22 +84,22 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
                 </NavLink>
               </NavBootstrap.Item>
             )}
-            {/* Add other Nav items as needed */}
+            <NavBootstrap.Item>
+              <NavLink to="/#" className="nav-link" onClick={handleScrollToAboutus} activeClassName="active">
+                About Us
+              </NavLink>
+            </NavBootstrap.Item>
           </NavBootstrap>
           <NavBootstrap>
             {/* Add Notifications Dropdown with Image */}
             <NavDropdown className="notification-dropdown" title={<img src={notificationIcon} alt="Notification" />} id="basic-nav-dropdown">
               <NavDropdown.Item onClick={handleNotifications}>
-                {notification ? (
-                  <div>
-                    {notification} <Badge variant="danger">1</Badge>
-                  </div>
-                ) : (
-                  'No new notifications'
-                )}
+                New Notification <Badge variant="danger">1</Badge>
               </NavDropdown.Item>
+              {/* Add more notification items as needed */}
             </NavDropdown>
 
+            {/* Existing code for user profile dropdown */}
             {isLoggedIn ? (
               <NavDropdown className="profile-dropdown" title={username ? `Hi ${username}` : ''} id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={handleSignOut}>Sign Out</NavDropdown.Item>

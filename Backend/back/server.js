@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const WebSocket = require('ws');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const SignupModel = require('../back/models/signupmodel');
@@ -9,21 +8,7 @@ const EventModel = require('../back/models/eventcardmodel');
 const DiningModel = require('../back/models/diningcardmodel');
 const BookingModel = require('../back/models/bookinghistrotymodel');
 
-const app = express();
-const server = http.createServer(app); // Create an HTTP server
-const wss = new WebSocket.Server({ noServer: true }); // Create a WebSocket server
-
-
-wss.on('connection', (ws) => {
-    console.log('Client connected');
-    ws.on('close', () => {
-      console.log('Client disconnected');
-    });
-  });
-  
-
-
-
+const app = express(); 
 
 app.use(cors(
 
@@ -134,29 +119,21 @@ app.post('/login', (req, res) => {
         .catch(err => res.json(err));
 });
 
-app.post('/events', upload.single('image'), async (req, res) => {
-    try {
-      const newEvent = await EventModel.create({
+app.post('/events', upload.single('image'), (req, res) => {
+    EventModel.create({
         title: req.body.title,
         description: req.body.description,
         image: req.file.buffer.toString('base64'),
-      });
-
-      // Broadcast new event to all connected WebSocket clients
-      wss.clients.forEach((client) => {
-        if (client.readyState === WebSocket.OPEN) {
-          client.send(JSON.stringify({ type: 'newEvent', eventTitle: newEvent.title }));
-        }
-      });
-
-      console.log('Created new event:', newEvent);
-      res.json(newEvent);
-    } catch (error) {
-      console.error('Error creating event:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
+    })
+        .then(newEvent => {
+            console.log('Created new event:', newEvent);
+            res.json(newEvent);
+        })
+        .catch(err => {
+            console.error('Error creating event:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
 });
-
 
 app.post('/dinings', upload.single('image'), (req, res) => {
     DiningModel.create({
@@ -334,11 +311,6 @@ app.get('/reservations/:idNumber', async (req, res) => {
     }
 });
 
-server.on('upgrade', (request, socket, head) => {
-    wss.handleUpgrade(request, socket, head, (ws) => {
-      wss.emit('connection', ws, request);
-    });
-  });
 
 app.listen(4000, () => {
     console.log("server is running");
