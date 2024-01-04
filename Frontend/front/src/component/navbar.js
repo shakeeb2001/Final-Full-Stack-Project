@@ -1,15 +1,31 @@
 // Navbar.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import NavBootstrap from 'react-bootstrap/Nav';
 import NavbarBootstrap from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Badge from 'react-bootstrap/Badge';
+import socketIOClient from 'socket.io-client';
 import './navbar.css';
 import loginIcon from '../images/newlogo.png';
+import notificationIcon from '../images/notification.png';
 
-function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
+const Navbar = ({ isLoggedIn, updateLoginStatus, isAdmin, username }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [notifications, setNotifications] = useState([]);
+
+  const socket = socketIOClient('http://localhost:4000');  // Update with your server's URL
+
+  useEffect(() => {
+    socket.on('newEventNotification', (event) => {
+      setNotifications((prevNotifications) => [...prevNotifications, event.title]);
+    });
+
+    return () => {
+      socket.off('newEventNotification');
+    };
+  }, []);
 
   const handleScrollToEvents = () => {
     const eventsSection = document.getElementById('events-container');
@@ -37,6 +53,11 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
     navigate('/signout');
   };
 
+  const handleNotifications = () => {
+    // Handle notification logic here
+    // You can show notifications or navigate to a notifications page
+  };
+
   const isSignOutPage = location.pathname === '/signout';
 
   return (
@@ -61,12 +82,12 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
               </NavLink>
             </NavBootstrap.Item>
             <NavBootstrap.Item onClick={handleScrollToEvents}>
-              <NavLink to="/#Container2" className="nav-link" activeClassName="event" >
+              <NavLink to="/#Container2" className="nav-link" activeClassName="event">
                 Events
               </NavLink>
             </NavBootstrap.Item>
             <NavBootstrap.Item onClick={handleScrollToDining}>
-              <NavLink to="/#Container3" className="nav-link" activeClassName="dining" >
+              <NavLink to="/#Container3" className="nav-link" activeClassName="dining">
                 Dining
               </NavLink>
             </NavBootstrap.Item>
@@ -78,12 +99,20 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
               </NavBootstrap.Item>
             )}
             <NavBootstrap.Item>
-              <NavLink to="/#" className="nav-link" onClick={handleScrollToAboutus} activeClassName="active" >
+              <NavLink to="/#" className="nav-link" onClick={handleScrollToAboutus} activeClassName="active">
                 About Us
               </NavLink>
             </NavBootstrap.Item>
           </NavBootstrap>
           <NavBootstrap>
+            <NavDropdown className="notification-dropdown" title={<img src={notificationIcon} alt="Notification" />} id="basic-nav-dropdown">
+              {notifications.map((notification, index) => (
+                <NavDropdown.Item key={index} onClick={handleNotifications}>
+                  {notification}
+                </NavDropdown.Item>
+              ))}
+            </NavDropdown>
+
             {isLoggedIn ? (
               <NavDropdown className="profile-dropdown" title={username ? `Hi ${username}` : ''} id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={handleSignOut}>Sign Out</NavDropdown.Item>
@@ -103,6 +132,6 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
       </NavbarBootstrap>
     </>
   );
-}
+};
 
 export default Navbar;
