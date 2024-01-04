@@ -30,7 +30,13 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 const server = http.createServer(app);
-const io = socketIO(server);
+const io = require("socket.io")(server, {
+    cors: {
+      origin: "*",
+      credentials: true,
+      methods: ["GET", "POST"],
+    },
+  });
 
 io.on('connection', (socket) => {
     console.log('A user connected');
