@@ -17,7 +17,7 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const socket = io('https://final-full-stack-project-backend.vercel.app', { transports: ['websocket'] });
+    const socket = io('wss://final-full-stack-project-backend.vercel.app', { transports: ['websocket'] });
 
 
     socket.on('new-event-notification', (event) => {

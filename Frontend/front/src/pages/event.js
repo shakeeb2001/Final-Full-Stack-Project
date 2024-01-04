@@ -11,7 +11,7 @@ const Event = ({ isAdmin }) => {
   const [cards, setCards] = useState([]);
   const [newCard, setNewCard] = useState({ title: '', description: '', image: null });
 
-  const socket = io('https://final-full-stack-project-backend.vercel.app'); // Adjust the URL to your server's URL
+  const socket = io('wss://final-full-stack-project-backend.vercel.app'); // Adjust the URL to your server's URL
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
