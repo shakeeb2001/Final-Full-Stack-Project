@@ -3,48 +3,29 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const http = require('http');
-const socketIo = require('socket.io');
 const SignupModel = require('../back/models/signupmodel');
 const EventModel = require('../back/models/eventcardmodel');
 const DiningModel = require('../back/models/diningcardmodel');
 const BookingModel = require('../back/models/bookinghistrotymodel');
 
 const app = express(); 
+
 app.use(cors(
+
     {
         origin: ["https://final-full-stack-project-frontend.vercel.app"], 
         methods: ["POST","GET","PUT","DELETE"], 
         credentials: true
     }
 ));
+
 app.use(express.json({ limit: '20mb' }));
 const MONGODB_URI = 'mongodb+srv://shakeeb:226284@mycluster.hitx68p.mongodb.net/Crystal-Cascade-Hotel?retryWrites=true&w=majority';
 mongoose.connect(MONGODB_URI);
+
 const connection = mongoose.connection;
-
-// Socket.io setup
-const server = http.createServer(app);
-const io = socketIo(server);
-
-io.on('connection', (socket) => {
-  console.log('A user connected');
-
-  // Handle new event or dining creation
-  socket.on('newEvent', (event) => {
-    // Broadcast the new event to all connected clients
-    io.emit('newEventNotification', event);
-  });
-
-  // Handle disconnection
-  socket.on('disconnect', () => {
-    console.log('A user disconnected');
-  });
-});
-const PORT = process.env.PORT || 4000;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-
 
 app.get("/hellow" , (req,res)=>{
     res.json("hellow");
@@ -331,6 +312,6 @@ app.get('/reservations/:idNumber', async (req, res) => {
 });
 
 
-server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(4000, () => {
+    console.log("server is running");
 });
