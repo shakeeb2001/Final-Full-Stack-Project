@@ -1,33 +1,17 @@
 // Navbar.js
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import NavBootstrap from 'react-bootstrap/Nav';
 import NavbarBootstrap from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Badge from 'react-bootstrap/Badge';
+import Badge from 'react-bootstrap/Badge'; // Added for notification count
 import './navbar.css';
 import loginIcon from '../images/newlogo.png';
-import notificationIcon from '../images/notification.png';
-import io from 'socket.io-client'; // Import Socket.IO client library
+import notificationIcon from '../images/notification.png'; // Add the path to your notification image
 
 function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const [notifications, setNotifications] = useState([]);
-
-  useEffect(() => {
-    const socket = io('wss://final-full-stack-project-backend.vercel.app', { transports: ['websocket'] });
-
-
-    socket.on('new-event-notification', (event) => {
-      setNotifications((prevNotifications) => [...prevNotifications, event]);
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
 
   const handleScrollToEvents = () => {
     const eventsSection = document.getElementById('events-container');
@@ -53,6 +37,11 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
   const handleSignOut = () => {
     updateLoginStatus(false);
     navigate('/signout');
+  };
+
+  const handleNotifications = () => {
+    // Handle notification logic here
+    // You can show notifications or navigate to a notifications page
   };
 
   const isSignOutPage = location.pathname === '/signout';
@@ -102,14 +91,15 @@ function Navbar({ isLoggedIn, updateLoginStatus, isAdmin, username }) {
             </NavBootstrap.Item>
           </NavBootstrap>
           <NavBootstrap>
+            {/* Add Notifications Dropdown with Image */}
             <NavDropdown className="notification-dropdown" title={<img src={notificationIcon} alt="Notification" />} id="basic-nav-dropdown">
-              {notifications.map((event, index) => (
-                <NavDropdown.Item key={index}>
-                  {event.title} - New Event <Badge variant="danger">1</Badge>
-                </NavDropdown.Item>
-              ))}
+              <NavDropdown.Item onClick={handleNotifications}>
+                New Notification <Badge variant="danger">1</Badge>
+              </NavDropdown.Item>
+              {/* Add more notification items as needed */}
             </NavDropdown>
 
+            {/* Existing code for user profile dropdown */}
             {isLoggedIn ? (
               <NavDropdown className="profile-dropdown" title={username ? `Hi ${username}` : ''} id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={handleSignOut}>Sign Out</NavDropdown.Item>

@@ -7,8 +7,6 @@ const SignupModel = require('../back/models/signupmodel');
 const EventModel = require('../back/models/eventcardmodel');
 const DiningModel = require('../back/models/diningcardmodel');
 const BookingModel = require('../back/models/bookinghistrotymodel');
-const http = require('http');
-const socketIO = require('socket.io');
 
 const app = express(); 
 
@@ -127,16 +125,14 @@ app.post('/events', upload.single('image'), (req, res) => {
         description: req.body.description,
         image: req.file.buffer.toString('base64'),
     })
-    .then(newEvent => {
-        console.log('Created new event:', newEvent);
-        // Emitting the 'newEvent' event when a new event is created
-        io.emit('newEvent', newEvent);
-        res.json(newEvent);
-    })
-    .catch(err => {
-        console.error('Error creating event:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-    });
+        .then(newEvent => {
+            console.log('Created new event:', newEvent);
+            res.json(newEvent);
+        })
+        .catch(err => {
+            console.error('Error creating event:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
 });
 
 app.post('/dinings', upload.single('image'), (req, res) => {
@@ -145,16 +141,14 @@ app.post('/dinings', upload.single('image'), (req, res) => {
         description: req.body.description,
         image: req.file.buffer.toString('base64'),
     })
-    .then(newDining => {
-        console.log('Created new dining:', newDining);
-        // Emitting the 'newDining' event when a new dining is created
-        io.emit('newDining', newDining);
-        res.json(newDining);
-    })
-    .catch(err => {
-        console.error('Error creating dining:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-    });
+        .then(newEvent => {
+            console.log('Created new event:', newEvent);
+            res.json(newEvent);
+        })
+        .catch(err => {
+            console.error('Error creating event:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
 });
 
 app.get('/events', async (req, res) => {
@@ -317,15 +311,7 @@ app.get('/reservations/:idNumber', async (req, res) => {
     }
 });
 
-io.on('connection', (socket) => {
-    console.log('A user connected');
 
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
-    });
-});
-
-
-server.listen(4000, () => {
+app.listen(4000, () => {
     console.log("server is running");
 });
