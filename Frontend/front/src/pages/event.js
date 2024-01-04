@@ -3,12 +3,15 @@ import Card from 'react-bootstrap/Card';
 //import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import io from 'socket.io-client'; // Import socket.io-client
 import './event.css'; // Import the CSS file
 
 const Event = ({ isAdmin }) => {
   const [showModal, setShowModal] = useState(false);
   const [cards, setCards] = useState([]);
   const [newCard, setNewCard] = useState({ title: '', description: '', image: null });
+
+  const socket = io('http://localhost:4000'); // Adjust the URL to your server's URL
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
@@ -54,6 +57,8 @@ const Event = ({ isAdmin }) => {
         setCards([...cards, addedEvent]);
         setNewCard({ title: '', description: '', image: null });
         handleCloseModal();
+        // Emit 'newEvent' socket event when a new event is added
+        socket.emit('newEvent', addedEvent);
       } else {
         console.error('Failed to add a new event card:', response.status, response.statusText);
       }
@@ -61,6 +66,7 @@ const Event = ({ isAdmin }) => {
       console.error('Error:', error);
     }
   };
+
 
   const dataURItoBlob = (dataURI) => {
     const byteString = atob(dataURI.split(',')[1]);
@@ -90,7 +96,19 @@ const Event = ({ isAdmin }) => {
     };
 
     fetchCards();
-  }, []);
+
+    // Listen for 'newEvent' socket event
+    socket.on('newEvent', (newEvent) => {
+      setCards((prevCards) => [...prevCards, newEvent]);
+    });
+
+    // Clean up socket event listener on component unmount
+    return () => {
+      socket.off('newEvent');
+    };
+  }, [socket]);
+
+
 
   const handleDeleteCard = async (cardId) => {
     try {
